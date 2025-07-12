@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${name} + ' | Portfolio'">Nabin Dhakal | Portfolio</title>
+
+
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Nabin Dhakal's software engineering portfolio showcasing skills, projects, and contact info." />
+    <meta name="keywords" content="Nabin Dhakal, Software Engineer, Portfolio, Java, Spring Boot, Full-stack Developer, Resume" />
+    <meta name="author" content="Nabin Dhakal" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Social Meta -->
+    <meta property="og:title" content="Nabin Dhakal | Portfolio" />
+    <meta property="og:description" content="Explore my projects, skills, and resume." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourportfolio.com/" />
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nabin Dhakal | Portfolio" />
+    <meta name="twitter:description" content="Explore my projects, skills, and resume." />
+    <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Ubuntu:wght@700&display=swap" rel="stylesheet" />
+    <style>
+        .bio-section {
+            background-color: #121214;
+            color: #e0e0e0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 900px;
+            margin: 2rem auto;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .bio-section strong {
+            color: #f9c13a;
+        }
+
+        body.light-mode .bio-section {
+            background-color: #fdfdfd;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .bio-section strong {
+            color: #c97f00;
+        }
+    </style>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #121214;
+            color: #eee;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #f9c13a;
+            transition: color 0.3s ease;
+        }
+
+        /* Navbar */
+        header nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: saturate(180%) blur(15px);
+            background: rgba(18, 18, 20, 0.75);
+            z-index: 1050;
+            padding: 15px 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(249, 193, 58, 0.15);
+            transition: background 0.3s ease;
+        }
+
+        header nav:hover,
+        header nav.scrolled {
+            background: rgba(18, 18, 20, 0.95);
+        }
+
+        .logo {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #f9c13a;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+
+        .navbar-custom {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .navbar-custom li {
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            color: #eee;
+            padding-bottom: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-custom li::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #f9c13a;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .navbar-custom li:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            width: 25px;
+            height: 20px;
+        }
+
+        .hamburger div {
+            background-color: #f9c13a;
+            height: 3px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-custom {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background: rgba(18, 18, 20, 0.95);
+                height: calc(100vh - 60px);
+                width: 200px;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: -5px 0 10px rgba(249, 193, 58, 0.3);
+            }
+
+            .navbar-custom.open {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header nav {
+                padding: 10px 1.5rem;
+            }
+        }
+
+        /* Light mode */
+        body.light-mode {
+            background: #eee;
+            color: #121214;
+        }
+
+        body.light-mode a:hover {
+            color: #ffb94d;
+        }
+
+        body.light-mode header nav {
+            background: rgba(255, 255, 255, 0.9);
+            color: #121214;
+            box-shadow: 0 0 10px rgba(249, 193, 58, 0.2);
+        }
+
+        body.light-mode .navbar-custom li {
+            color: #121214;
+        }
+
+        body.light-mode .navbar-custom li::after {
+            background: #f9c13a;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 2rem 80px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* About */
+        #about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 80px;
+        }
+
+        #about .intro-text {
+            flex: 1 1 480px;
+        }
+
+        #about h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #f9c13a, #ff7c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            user-select: none;
+        }
+
+        #about p.lead {
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.5;
+            max-width: 480px;
+        }
+
+        #about img {
+            max-width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(249, 193, 58, 0.5);
+            flex: 0 1 320px;
+            object-fit: cover;
+        }
+
+        /* Section titles */
+        h2.section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f9c13a;
+            position: relative;
+            display: inline-block;
+            user-select: none;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #f9c13a;
+            border-radius: 3px;
+            margin-top: 6px;
+        }
+
+        /* Skills grid */
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #1f1f23;
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 6px 15px rgba(249, 193, 58, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: default;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(249, 193, 58, 0.5);
+        }
+
+        .skill-card img {
+            width: 50px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 2px #f9c13a);
+        }
+
+        .skill-card h5 {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #f9c13a;
+        }
+
+        .skill-card p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Projects grid */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #1f1f23;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(249, 193, 58, 0.7);
+        }
+
+        .project-card img {
+            width: 70px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 5px #f9c13a);
+            border-radius: 10px;
+            object-fit: contain;
+            max-height: 70px;
+        }
+
+        .project-card h5 {
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: #f9c13a;
+        }
+
+        .project-card p {
+            flex-grow: 1;
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: #f9c13a;
+            color: #121214;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            transition: background 0.3s ease, color 0.3s ease;
+            box-shadow: 0 6px 15px rgba(249, 193, 58, 0.5);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.1px;
+            user-select: none;
+        }
+
+        .btn-custom:hover {
+            background: #ffb94d;
+            color: #121214;
+            box-shadow: 0 10px 25px rgba(249, 193, 58, 0.8);
+        }
+
+        /* Contact */
+        #contact p {
+            font-size: 1.1rem;
+            margin: 0.3rem 0;
+            color: #ddd;
+        }
+
+        /* Social Media */
+        #social a img {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 0 3px #f9c13a);
+            transition: transform 0.3s ease;
+        }
+
+        #social a:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #121214;
+            color: #eee;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid #333;
+            user-select: none;
+        }
+
+        footer a {
+            color: #f9c13a;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        form input,
+        form textarea {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background: #121214;
+            color: #eee;
+            width: 100%;
+            resize: vertical;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: inset 0 0 5px rgba(249, 193, 58, 0.4);
+            transition: box-shadow 0.3s ease;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            box-shadow: inset 0 0 8px rgba(249, 193, 58, 0.8);
+        }
+
+        form label {
+            margin-top: 10px;
+            font-weight: 600;
+            color: #f9c13a;
+            display: block;
+        }
+
+        /* Flash message */
+        .flash-message {
+            background-color: #f9c13a;
+            color: #121214;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #about img {
+                margin-top: 1rem;
+                max-width: 260px;
+            }
+
+            header nav {
+                padding: 12px 1rem;
+            }
+
+            .navbar-custom {
+                gap: 1rem;
+            }
+        }
+
+        /* Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: #f9c13a;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo" th:text="${name}">Nabin Dhakal</div>
+
+        <!-- Hamburger for mobile -->
+        <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <ul class="navbar-custom" id="nav-menu">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#resume" class="nav-link">Resume</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+            <li>
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">🌙</button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- About -->
+    <section id="about">
+        <div class="intro-text">
+            <h1>Hi, I am <br /><span th:text="${name}">Nabin Dhakal</span></h1>
+            <p class="lead">
+                <!-- ✅ Bio Section -->
+            <section class="bio-section">
+                <p>
+                    I kicked off my journey mastering <strong>Java</strong>, <strong>Spring Boot</strong>, and <strong>SQL</strong>, building solid backend systems. Along the way, I dove into front-end tech like <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong> to create smooth user experiences. Plus, I got hands-on with <strong>Cisco’s Introduction to Networking</strong>, understanding the foundations of how data moves across the web — making me a full-stack dev who truly gets the whole tech stack.
+                </p>
+            </section>
+            </p>
+        </div>
+        <img src="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg" alt="Nabin Dhakal" />
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <p>Clean code, responsive layouts, dynamic backends — my stack is strong with HTML, CSS, JS, Spring Boot,
+            PostgreSQL & Thymeleaf.</p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML" />
+                <h5>HTML5</h5>
+                <p>Modern semantic markup</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS" />
+                <h5>CSS3</h5>
+                <p>Custom styling and layouts</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" />
+                <h5>JavaScript</h5>
+                <p>Dynamic & interactive UI</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java" />
+                <h5>Java</h5>
+                <p>Robust backend programming</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" alt="Spring Boot" />
+                <h5>Spring Boot</h5>
+                <p>Rapid backend development</p>
+            </div>
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968372.png" alt="PostgreSQL" />
+                <h5>PostgreSQL</h5>
+                <p>Efficient database management</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card" tabindex="0" role="button" aria-label="Inventory Management System project">
+
+                    <img src="https://cdn-icons-png.flaticon.com/512/2887/2887470.png" alt="Library Management System" />
+                    <h5>Library Management System</h5>
+                    <p>A system to manage library books, users, and borrowing records efficiently.</p>
+                    <button class="btn-custom">View</button>
+                </div>
+
+            <!-- Static example projects if backend empty -->
+
+            <div class="project-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Inventory Management" />
+                <h5>Inventory Management System</h5>
+                <p>Track and manage stock levels, orders, and suppliers for businesses.</p>
+                <button class="btn-custom">View</button>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Resume Icon" />
+                <h5>My Resume</h5>
+        <p>
+            You can download my latest resume in PDF format and check out my detailed skills and experience.
+        </p>
+                <!-- Make sure your resume PDF file is at /files/Nabin_Dhakal_Resume.pdf or adjust path -->
+
+                <a href="/files/Nabin_Dhakal_Resume.pdf" class="btn-custom" target="_blank" download="Nabin_Dhakal_Resume.pdf">Download</a>
+            </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <p>Hit me up for collabs, questions, or just to say hey!</p>
+
+        <form id="contact-form" action="#" method="POST" novalidate>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+
+            <button type="submit" class="btn-custom">Send</button>
+        </form>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container" role="contentinfo" aria-label="Footer Contact and Social Links">
+        <p>© 2025 Nabin Dhakal - Software Engineer</p>
+        <nav id="social" aria-label="Social media links" role="navigation">
+            <ul class="social-list">
+                <li>
+                    <a href="https://github.com/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://linkedin.com/in/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/@cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="TikTok icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X (Twitter) icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook icon" />
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.snapchat.com/add/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+                        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="Snapchat icon" />
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>
+
+<style>
+
+    footer {
+        background-color: #121214;
+        color: #eee;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        border-top: 1px solid #333;
+        user-select: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .footer-container p {
+        margin-bottom: 1rem;
+    }
+
+    ul.social-list {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    ul.social-list li a {
+        color: #f9c13a;
+        transition: color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        outline-offset: 3px;
+    }
+
+    ul.social-list li a:hover,
+    ul.social-list li a:focus {
+        color: #ffb94d;
+        outline: 2px solid #ffb94d;
+        outline-offset: 4px;
+    }
+
+    ul.social-list li img {
+        filter: drop-shadow(0 0 3px #f9c13a);
+        transition: transform 0.3s ease;
+        width: 28px;
+        height: 28px;
+    }
+
+    ul.social-list li a:hover img,
+    ul.social-list li a:focus img {
+        transform: scale(1.2);
+    }
+
+    /* Light mode */
+    body.light-mode footer {
+        background-color: #f9f9f9;
+        color: #121214;
+        border-top: 1px solid #ddd;
+    }
+
+    body.light-mode ul.social-list li a {
+        color: #c97f00;
+    }
+
+    body.light-mode ul.social-list li a:hover,
+    body.light-mode ul.social-list li a:focus {
+        color: #ffa500;
+        outline-color: #ffa500;
+    }
+
+    body.light-mode ul.social-list li img {
+        filter: drop-shadow(0 0 3px #c97f00);
+    }
+</style>
+
+
+<script>
+    // Mobile hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+        hamburger.setAttribute('aria-expanded', !expanded);
+        navMenu.classList.toggle('open');
+    });
+
+    // Close menu on link click (mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('open')) {
+                navMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', false);
+            }
+        });
+    });
+
+    // Dark mode toggle with localStorage
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function setTheme(theme) {
+        if (theme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.textContent = '🌙';
+        } else {
+            body.classList.remove('light-mode');
+            themeToggle.textContent = '☀️';
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+        if (currentTheme === 'dark') {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+    });
+
+    // On load: set theme from localStorage or system preference
+    (function () {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Detect system preference
+            const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+            setTheme(prefersLight ? 'light' : 'dark');
+        }
+    })();
+
+    // Simple form validation + alert (you can replace with backend integration)
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+
+        if (!name || !email || !message) {
+            alert('Please fill all fields.');
+            return;
+        }
+        // Send form data here (e.g., fetch API to your backend)
+        alert('Message sent! Thanks for reaching out.');
+
+        form.reset();
+    });
+
+</script>
+
+</body>
+
+</html>
