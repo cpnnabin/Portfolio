@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabin Dhakal - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background: #f6f7fb;
+            min-height: 100vh;
+            padding: 12px;
+        }
+        .toolbar {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .toolbar button {
+            padding: 9px 18px;
+            margin: 0 8px;
+            background-color: #7466aa;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.25s ease, transform 0.2s ease;
+        }
+        .toolbar button:hover {
+            background-color: #5e4f8e;
+            transform: translateY(-1px);
+        }
+        .resume-container {
+            max-width: 8.5in;
+            min-height: 10.5in;
+            margin: 8px auto 12px;
+            padding: 26px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 16px;
+            padding: 6px 0 12px;
+            position: relative;
+        }
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 4px;
+        }
+        .contact-header {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .contact-header span {
+            white-space: nowrap;
+        }
+        .contact-header a {
+            color: #7466aa;
+            text-decoration: none;
+        }
+        .contact-header a:hover {
+            text-decoration: underline;
+        }
+        .header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #7466aa, #b1a7e0);
+            border-radius: 6px;
+            transition: transform 0.25s ease, filter 0.25s ease;
+            transform-origin: left;
+        }
+        .header:hover::after {
+            transform: scaleX(1.03);
+            filter: brightness(1.05);
+        }
+        .header-photo {
+            flex-shrink: 0;
+        }
+        .header-photo img {
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            border: 3px solid #7466aa;
+            object-fit: cover;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(116, 102, 170, 0.25);
+        }
+        .header-photo img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 18px rgba(116, 102, 170, 0.3);
+        }
+        .header-content {
+            flex: 1;
+            text-align: left;
+            padding: 0 10px;
+        }
+        .headline {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .header-name {
+            font-size: 24px;
+            color: #5b4d95;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .role-pill {
+            padding: 3px 9px;
+            background: #7466aa;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .header p {
+            font-size: 12px;
+            color: #555;
+            margin: 2px 0 0;
+            line-height: 1.3;
+        }
+        .qr-card {
+            text-align: center;
+            padding: 0 0 0 12px;
+            border-left: 1px solid #e6e1f3;
+            cursor: pointer;
+            min-width: 105px;
+        }
+        .qr-card img {
+            width: 90px;
+            height: 90px;
+            display: block;
+            margin: 0 auto 6px;
+            border-radius: 6px;
+        }
+        .qr-card small {
+            font-size: 11px;
+            color: #5b4d95;
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 12px;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #7466aa;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            border-bottom: 2px solid #7466aa;
+            padding-bottom: 4px;
+            user-select: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .section-title::before {
+            content: attr(data-icon);
+            font-size: 14px;
+        }
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section-title::after {
+            content: '▼';
+            font-size: 10px;
+            color: #aaa;
+            transition: transform 0.2s ease;
+        }
+        .section.collapsed .section-title::after {
+            transform: rotate(-90deg);
+        }
+        .entry {
+            margin-bottom: 10px;
+            padding: 9px;
+            border-left: 3px solid #e7e7e7;
+            transition: background-color 0.25s ease, border-color 0.25s ease;
+        }
+        .entry:hover {
+            border-left-color: #7466aa;
+            background-color: #f7f7ff;
+        }
+        .entry-title {
+            font-weight: 600;
+            font-size: 12.5px;
+            color: #333;
+        }
+        .entry-subtitle {
+            font-size: 11.5px;
+            color: #666;
+            font-style: italic;
+        }
+        .entry-content {
+            font-size: 11.5px;
+            margin-top: 3px;
+            line-height: 1.45;
+        }
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11.5px;
+        }
+        .skill-tag {
+            padding: 6px 10px;
+            background: #fafafa;
+            border: 1px solid #e2e2ec;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            color: #333;
+        }
+        .skill-tag:hover {
+            background: #f0edf9;
+            border-color: #cfc6e9;
+        }
+        .skill-tag.active {
+            background: #7466aa;
+            border-color: #7466aa;
+            color: #fff;
+        }
+        ul {
+            margin-left: 18px;
+            font-size: 11.5px;
+            line-height: 1.45;
+        }
+        li {
+            margin-bottom: 4px;
+        }
+        .entry.collapsed > .entry-content {
+            display: none;
+        }
+        .entry-title::after {
+            content: ' •';
+            color: #aaa;
+            font-weight: 400;
+        }
+        .section.collapsed > *:not(.section-title) {
+            display: none;
+        }
+        .entry-title {
+            cursor: pointer;
+        }
+        .entry-title.active {
+            color: #7466aa;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS ===== */
+        
+        /* Tablet (768px - 1024px) */
+        @media (max-width: 1024px) and (min-width: 768px) {
+            .resume-container {
+                max-width: 100%;
+                min-height: auto;
+                padding: 20px;
+            }
+            .header-main {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .header-photo img {
+                width: 70px;
+                height: 70px;
+            }
+            .contact-header {
+                font-size: 10px;
+                gap: 12px;
+            }
+            .section {
+                margin-bottom: 18px;
+            }
+            .skill-pill {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Small Phone/Tablet (577px - 767px) */
+        @media (max-width: 767px) and (min-width: 577px) {
+            body {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .resume-container {
+                max-width: 100%;
+                min-height: auto;
+                padding: 16px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+                border-radius: 8px;
+                margin: 8px 0 16px;
+            }
+            .toolbar {
+                margin-bottom: 12px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .toolbar button {
+                padding: 8px 14px;
+                margin: 4px;
+                font-size: 12px;
+            }
+            .header {
+                margin-bottom: 14px;
+                padding: 6px 0 10px;
+            }
+            .header-main {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-photo img {
+                width: 65px;
+                height: 65px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .role-pill {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+            .contact-header {
+                font-size: 9px;
+                gap: 10px;
+                margin-bottom: 5px;
+            }
+            .section-title {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+            .entry-item, .skill-group {
+                margin-bottom: 12px;
+            }
+            .entry-title {
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+            .entry-detail {
+                font-size: 11px;
+                margin-bottom: 3px;
+            }
+            .skill-pill {
+                font-size: 11px;
+                padding: 5px 10px;
+                margin-bottom: 6px;
+            }
+            .qr-card {
+                padding: 12px;
+            }
+            .qr-card img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Mobile Phone (< 576px) - Touch Friendly */
+        @media (max-width: 576px) {
+            html {
+                font-size: 13px;
+            }
+            body {
+                padding: 6px;
+                font-size: 13px;
+                background: #f8f9fa;
+            }
+            .resume-container {
+                max-width: 100%;
+                min-height: auto;
+                padding: 14px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+                border-radius: 6px;
+                margin: 6px 0 12px;
+            }
+            .toolbar {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+            .toolbar button {
+                padding: 7px 12px;
+                margin: 3px;
+                font-size: 11px;
+                min-height: 36px;
+                min-width: 36px;
+            }
+            .toolbar button:active {
+                transform: scale(0.95);
+            }
+            .header {
+                margin-bottom: 12px;
+                padding: 5px 0 8px;
+            }
+            .header-main {
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
+            .header-photo img {
+                width: 55px;
+                height: 55px;
+                border-radius: 50%;
+            }
+            h1 {
+                font-size: 16px;
+                margin: 4px 0;
+                word-break: break-word;
+            }
+            h2 {
+                font-size: 12px;
+            }
+            .role-pill {
+                font-size: 10px;
+                padding: 3px 8px;
+            }
+            .contact-header {
+                font-size: 8.5px;
+                gap: 8px;
+                margin-bottom: 4px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-header span {
+                display: block;
+                margin: 1px 0;
+            }
+            .section {
+                margin-bottom: 10px;
+            }
+            .section-title {
+                font-size: 12px;
+                margin-bottom: 8px;
+                padding-bottom: 4px;
+                border-bottom: 2px solid #7466aa;
+            }
+            .entry-item, .skill-group {
+                margin-bottom: 10px;
+            }
+            .entry-title {
+                font-size: 12px;
+                margin-bottom: 3px;
+                cursor: pointer;
+                touch-action: manipulation;
+            }
+            .entry-detail {
+                font-size: 10px;
+                margin-bottom: 2px;
+            }
+            .skill-pill {
+                display: inline-block;
+                font-size: 10px;
+                padding: 4px 8px;
+                margin: 3px 4px 3px 0;
+                min-height: 24px;
+                min-width: 24px;
+            }
+            .qr-card {
+                padding: 10px;
+                text-align: center;
+                margin-top: 8px;
+            }
+            .qr-card img {
+                width: 70px;
+                height: 70px;
+                border-radius: 4px;
+            }
+            .qr-card p {
+                font-size: 9px;
+                margin-top: 4px;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .toolbar button,
+            .skill-pill,
+            .entry-title {
+                min-height: 40px;
+                min-width: 40px;
+                padding: 8px 14px;
+            }
+            .toolbar button:hover {
+                transform: none;
+            }
+            .toolbar button:active {
+                transform: scale(0.96);
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .toolbar {
+                display: none;
+            }
+            .resume-container {
+                margin: 0;
+                padding: 30px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <button onclick="window.print()">🖨️ Print</button>
+        <button onclick="downloadPDF()">📥 Save as PDF</button>
+        <button onclick="shareResume()">📤 Share</button>
+        <button onclick="copyContacts()">📋 Copy Contacts</button>
+    </div>
+
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-main">
+                <div class="header-photo">
+                    <img src="../7466AA.jpg" alt="Nabin Dhakal" id="profilePhoto">
+                </div>
+                <div class="header-content">
+                    <div class="headline">
+                        <div class="header-name" id="headerName">Nabin Dhakal</div>
+                        <span class="role-pill">Java Developer</span>
+                    </div>
+                    <p>Building reliable Java and SQL solutions with clean, maintainable code.</p>
+                </div>
+                <div class="qr-card" id="qrCard">
+                    <img id="qrCode" alt="QR to view resume">
+                    <small>Scan to view</small>
+                </div>
+            </div>
+            <!-- Contact Info -->
+            <div class="contact-header">
+                <span>📞 <a href="tel:+977-9869596970">+977-9869596970</a></span>
+                <span>📧 <a href="mailto:cpnnabingovnp@gmail.com">cpnnabingovnp@gmail.com</a></span>
+                <span>📍 Dhapakhel, Lalitpur</span>
+                <span>🔗 <a href="https://www.linkedin.com/in/cpnnabin/" target="_blank">LinkedIn</a></span>
+                <span>💻 <a href="https://github.com/cpnnabin" target="_blank">GitHub</a></span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section" id="summarySection">
+            <div class="section-title" data-icon="📝">Professional Summary</div>
+            <div class="entry-content" id="summaryText">
+                I am a dedicated Java Developer aspiring to join an organization where I can fully utilize my technical skills, learn new technologies, apply innovative ideas, and make a significant contribution to organizational success while building a strong career growth path. With foundational knowledge of database management using SQL and MySQL, and proficiency in Java Object-Oriented Programming, I am prepared to develop robust and scalable applications.
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section" id="skillsSection">
+            <div class="section-title" data-icon="⚡">Skills</div>
+            <div class="skill-tags" id="skillTags">
+                <button class="skill-tag">Java · OOP</button>
+                <button class="skill-tag">SQL · MySQL</button>
+                <button class="skill-tag">HTML5</button>
+                <button class="skill-tag">CSS3</button>
+                <button class="skill-tag">Debugging & Testing</button>
+                <button class="skill-tag">Responsive Layouts</button>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <div class="section-title" data-icon="🚀">Projects</div>
+            <div class="entry">
+                <div class="entry-title">Library Management System</div>
+                <div class="entry-subtitle">Java & MySQL | 2024-2025</div>
+                <div class="entry-content">
+                    <ul>
+                        <li>Developed a basic application to manage book records and user borrowing history</li>
+                        <li>Implemented using Java for backend logic and MySQL for database management</li>
+                        <li>Designed relational database schema for efficient data retrieval and management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section-title" data-icon="💼">Professional Experience</div>
+            <div class="entry">
+                <div class="entry-title">Java Backend Developer Intern</div>
+                <div class="entry-subtitle">MetaHorizon, Baneshwor, Kathmandu | Jun 2025 - Sep 2025</div>
+                <div class="entry-content">
+                    <ul>
+                        <li>Built backend features and REST APIs using Java</li>
+                        <li>Designed and implemented database integrations with MySQL</li>
+                        <li>Collaborated with team to develop scalable application features</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title" data-icon="🎓">Academic History</div>
+            <div class="entry">
+                <div class="entry-title">BSc. Software Engineer</div>
+                <div class="entry-subtitle">Patan College for Professional Studies, Kupandol, Lalitpur</div>
+                <div class="entry-content">Expected: 2025 - 2028</div>
+            </div>
+            <div class="entry">
+                <div class="entry-title">+2 in Science</div>
+                <div class="entry-subtitle">Global School of Science, Mid-Baneshwor, Kathmandu</div>
+                <div class="entry-content">2021 - 2023</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Print functionality
+        function downloadPDF() {
+            window.print();
+            alert('Use browser Print dialog:\n1. Select "Save as PDF"\n2. Click "Save"');
+        }
+
+        // Share functionality
+        function shareResume() {
+            const text = 'Check out my Resume - Nabin Dhakal (Java Developer)';
+            const url = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nabin Dhakal Resume',
+                    text: text,
+                    url: url
+                }).catch(err => console.log('Share cancelled'));
+            } else {
+                // Fallback: Copy link to clipboard
+                navigator.clipboard.writeText(url);
+                alert('Resume link copied to clipboard!');
+            }
+        }
+
+        // Add click-to-call functionality
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!navigator.userAgent.match(/iPhone|Android|iPad/)) {
+                    e.preventDefault();
+                    alert('Phone number: ' + this.textContent + '\n\nCopied to clipboard!');
+                    navigator.clipboard.writeText(this.textContent.trim());
+                }
+            });
+        });
+
+        // Add smooth scroll for links
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Allow default mailto behavior
+                return true;
+            });
+        });
+
+        // Auto-print if opened directly (optional)
+        // window.addEventListener('load', function() {
+        //     window.print();
+        // });
+
+        // Toggle skill tag highlight
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('active');
+            });
+        });
+
+        // Collapse/expand sections when title is clicked
+        document.querySelectorAll('.section-title').forEach(title => {
+            title.addEventListener('click', () => {
+                const section = title.closest('.section');
+                section.classList.toggle('collapsed');
+            });
+        });
+
+        // Highlight entry titles on click
+        document.querySelectorAll('.entry-title').forEach(entry => {
+            entry.addEventListener('click', () => {
+                entry.classList.toggle('active');
+                entry.closest('.entry').classList.toggle('collapsed');
+            });
+        });
+
+        // Clickable name copies full name
+        const headerName = document.getElementById('headerName');
+        if (headerName) {
+            headerName.addEventListener('click', () => {
+                navigator.clipboard.writeText(headerName.textContent.trim()).catch(() => {});
+            });
+        }
+
+        // Generate QR for this resume URL
+        const qrImg = document.getElementById('qrCode');
+        const qrCard = document.getElementById('qrCard');
+        const resumeUrl = window.location.href;
+        if (qrImg) {
+            const encoded = encodeURIComponent(resumeUrl);
+            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encoded;
+        }
+        if (qrCard) {
+            qrCard.addEventListener('click', () => {
+                navigator.clipboard.writeText(resumeUrl).then(() => alert('Resume link copied.')).catch(() => {});
+            });
+        }
+
+        // Copy contact info
+        function copyContacts() {
+            const contacts = Array.from(document.querySelectorAll('.contact-info span')).map(s => s.innerText).join(' | ');
+            navigator.clipboard.writeText(contacts).then(() => alert('Contacts copied to clipboard.')).catch(() => alert('Copy not supported in this browser.'));
+        }
+    </script>
+</body>
+</html>
