@@ -533,18 +533,64 @@
         }
 
         @media print {
+            @page {
+                size: A4;
+                margin: 0.5in;
+            }
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
+                font-size: 11pt;
+                color: #000;
             }
             .toolbar {
-                display: none;
+                display: none !important;
             }
             .resume-container {
                 margin: 0;
-                padding: 30px;
+                padding: 20px;
                 box-shadow: none;
                 border-radius: 0;
+                max-width: 100%;
+                page-break-after: avoid;
+            }
+            .header {
+                page-break-after: avoid;
+                margin-bottom: 15px;
+            }
+            .header::after {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 15px;
+            }
+            .entry {
+                page-break-inside: avoid;
+                margin-bottom: 8px;
+            }
+            .section-title {
+                page-break-after: avoid;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .skill-tag {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .qr-card {
+                page-break-inside: avoid;
+            }
+            .header-photo img,
+            .qr-card img {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            a {
+                text-decoration: none;
+                color: #7466aa;
             }
         }
     </style>
@@ -652,6 +698,16 @@
                 <div class="entry-title">+2 in Science</div>
                 <div class="entry-subtitle">Global School of Science, Mid-Baneshwor, Kathmandu</div>
                 <div class="entry-content">2021 - 2023</div>
+            </div>
+            <div class="entry">
+                <div class="entry-title">SEE (Class 10)</div>
+                <div class="entry-subtitle">Jugal School, Dhapakhel, Lalitpur</div>
+                <div class="entry-content">2013 - 2021</div>
+            </div>
+            <div class="entry">
+                <div class="entry-title">Primary Education</div>
+                <div class="entry-subtitle">Shree Bal Sandesh Aadharbhut Vidyalaya, Bagchaur, Salyan</div>
+                <div class="entry-content">2008 - 2013</div>
             </div>
         </div>
     </div>
