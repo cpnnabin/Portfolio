@@ -3261,6 +3261,7 @@
             
             <!-- Daily Quote -->
             <div class="info-card" style="margin-top: 40px; padding: 30px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                <p id="nepali-date" style="font-size: 15px; margin-bottom: 18px; color: #ffe082; font-weight: 500;">Loading Nepali date...</p>
                 <div style="font-size: 36px; margin-bottom: 15px;">💡</div>
                 <p id="daily-quote" style="font-size: 20px; font-style: italic; line-height: 1.6; margin-bottom: 10px;">Loading inspirational quote...</p>
                 <p id="quote-author" style="font-size: 14px; opacity: 0.9;">-- Anonymous</p>
@@ -4066,66 +4067,6 @@
 
         // ============= API INTEGRATIONS =============
         
-        // GitHub API - Fetch user stats
-        async function fetchGitHubStats() {
-            try {
-                const response = await fetch('https://api.github.com/users/cpnnabin');
-                const data = await response.json();
-                
-                document.getElementById('github-repos').textContent = data.public_repos || '0';
-                document.getElementById('github-followers').textContent = data.followers || '0';
-                document.getElementById('github-gists').textContent = data.public_gists || '0';
-            } catch (error) {
-                console.error('Error fetching GitHub stats:', error);
-                document.getElementById('github-repos').textContent = 'N/A';
-                document.getElementById('github-followers').textContent = 'N/A';
-                document.getElementById('github-gists').textContent = 'N/A';
-            }
-        }
-
-        // GitHub API - Fetch latest repositories
-        async function fetchGitHubRepos() {
-            try {
-                const response = await fetch('https://api.github.com/users/cpnnabin/repos?sort=updated&per_page=6');
-                const repos = await response.json();
-                
-                const container = document.getElementById('repos-container');
-                container.innerHTML = '';
-                
-                repos.forEach(repo => {
-                    const repoCard = document.createElement('div');
-                    repoCard.className = 'info-card';
-                    repoCard.style.padding = '25px';
-                    repoCard.style.cursor = 'pointer';
-                    repoCard.onclick = () => window.open(repo.html_url, '_blank');
-                    
-                    repoCard.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                            <div style="font-size: 24px;">📁</div>
-                            <h5 style="margin: 0; color: #7466aa; font-size: 16px; font-weight: 600;">${repo.name}</h5>
-                        </div>
-                        <p style="color: #666; font-size: 14px; margin-bottom: 15px; min-height: 40px;">
-                            ${repo.description || 'No description available'}
-                        </p>
-                        <div style="display: flex; gap: 15px; font-size: 13px; color: #888;">
-                            ${repo.language ? `<span>💻 ${repo.language}</span>` : ''}
-                            <span>⭐ ${repo.stargazers_count}</span>
-                            <span>🔱 ${repo.forks_count}</span>
-                        </div>
-                    `;
-                    
-                    container.appendChild(repoCard);
-                });
-            } catch (error) {
-                console.error('Error fetching GitHub repos:', error);
-                document.getElementById('repos-container').innerHTML = `
-                    <div class="info-card" style="text-align: center; padding: 40px;">
-                        <p style="color: #666;">Failed to load repositories. Please try again later.</p>
-                    </div>
-                `;
-            }
-        }
-
         // Quotable API - Fetch daily inspirational quote
         async function fetchDailyQuote() {
             try {
@@ -4141,11 +4082,25 @@
             }
         }
 
-        // Initialize all API calls on page load
+        // Nepali Date API - Fetch current Nepali date
+        async function fetchNepaliDate() {
+            try {
+                // Using nepalicalendar API (public endpoint)
+                const response = await fetch('https://nepali-date-api.vercel.app/api/today');
+                const data = await response.json();
+                // Example response: { bs: "2082-09-06", ad: "2025-12-22", day: "Monday", bs_month: "Poush", bs_day: "६" }
+                const nepaliDate = `${data.bs_day} ${data.bs_month} ${data.bs}, ${data.day}`;
+                document.getElementById('nepali-date').textContent = `नेपाली मिति: ${nepaliDate}`;
+            } catch (error) {
+                console.error('Error fetching Nepali date:', error);
+                document.getElementById('nepali-date').textContent = 'नेपाली मिति लोड हुन सकेन';
+            }
+        }
+
+        // Initialize daily quote API call on page load
         window.addEventListener('load', () => {
-            fetchGitHubStats();
-            fetchGitHubRepos();
             fetchDailyQuote();
+            fetchNepaliDate();
         });
     </script>
 </body>
