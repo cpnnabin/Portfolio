@@ -4,7 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title th:text="${name} + ' | Portfolio'">Nabin Dhakal | Portfolio</title>
+        <title>Nabin Dhakal | Portfolio</title>
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Portfolio of Nabin Dhakal, Java-focused software engineering student and backend developer from Nepal. Explore projects, journey, and contact info.">
+        <meta name="keywords" content="Nabin Dhakal, Software Engineer, Java, Backend, Portfolio, Nepal, Spring Boot, React">
+        <meta name="author" content="Nabin Dhakal">
+        <!-- Open Graph Meta Tags -->
+        <meta property="og:title" content="Nabin Dhakal | Portfolio">
+        <meta property="og:description" content="Portfolio of Nabin Dhakal, Java-focused software engineering student and backend developer from Nepal.">
+        <meta property="og:image" content="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://cpnnabin.github.io/">
+        <!-- Twitter Card Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Nabin Dhakal | Portfolio">
+        <meta name="twitter:description" content="Portfolio of Nabin Dhakal, Java-focused software engineering student and backend developer from Nepal.">
+        <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg">
 
 
 
@@ -2781,8 +2796,20 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#home">Nabin Dhakal</a>
+        <div class="container" style="display: flex; align-items: center;">
+            <a class="navbar-brand" href="#home" style="margin-right: 1rem;">Nabin Dhakal</a>
+            <span id="nepali-date-navbar" style="margin-right: 1rem; display: flex; align-items: flex-start; font-size: 1.05rem; color: #21807a; font-weight: 600;">
+                <span style="margin-right: 0.3rem; font-size: 1.1em; vertical-align: top; padding-top: 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="color:#21807a;">
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 3v1h14V3a1 1 0 0 0-1-1h-1v.5a.5.5 0 0 1-1 0V2h-8v.5a.5.5 0 0 1-1 0V2H2a1 1 0 0 0-1 1zm14 2H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
+                    </svg>
+                </span>
+                <span style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <span id="nepali-date-text" style="margin-bottom: 4px;">Loading...</span>
+                    <span id="english-date-text" style="color:#7466aa; font-weight:400; font-size:0.98em;"> </span>
+                </span>
+                </span>
+            </span>
             <button id="themeToggle" class="btn btn-sm btn-outline-secondary ms-3" type="button" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
             </button>
@@ -2813,7 +2840,7 @@
                             src="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg"
                             alt="Nabin Dhakal - Software Engineer"
                             class="profile-img image-reveal"
-                            loading="eager"
+                                loading="lazy"
                             width="280"
                             height="280"
                             onerror="this.src='https://via.placeholder.com/280x280/7466aa/ffffff?text=ND'"
@@ -2821,16 +2848,17 @@
                     </div>
 
                     <h1 class="hero-title fade-in-up holographic stagger-text glitch" data-text="Nabin Dhakal">Nabin Dhakal</h1>
-                    <p class="hero-subtitle">📍 Dhapakhel, Lalitpur</p>
-                    <p class="hero-subtitle">💼 Softwere Engineer Student</p>
+                                        <p class="hero-subtitle">📍 Dhapakhel, Lalitpur · 💼 Software Engineering Student</p>
 
-                    <p class="hero-description">
-                        I am a Java Developer dedicated to utilizing my skills to learn new technologies, apply innovative ideas, and contribute meaningfully to organizational success while building my career growth. I have fundamental knowledge of database management with SQL and MySQL, and I'm proficient in Java Object-Oriented Programming. I've developed practical applications like the Library Management System, demonstrating my ability to create functional solutions using Java and MySQL.
-                    </p>
-
-                    <p class="hero-description">
-                        To be a part of an organization where I can fully utilize my skills, learn new things, apply innovative ideas, and make a significant contribution to the success of the organization while building my career growth.
-                    </p>
+                                        <p class="hero-description">
+                                            I’m a Java-focused software engineering student with a strong interest in backend development and system design. I enjoy building real, database-driven applications and continuously improving my skills through hands-on projects and problem-solving.
+                                        </p>
+                                        <p class="hero-description">
+                                            I work mainly with Java, SQL/MySQL, and backend logic, and I’ve built practical systems like a Library Management System, where I handled database schema design, core backend functionality, and clean application flow. These projects reflect my focus on writing maintainable, well-structured code rather than just surface-level features.
+                                        </p>
+                                        <p class="hero-description">
+                                            My goal is to grow as a backend developer by learning continuously, applying innovative ideas, and contributing meaningfully to real-world systems—while building scalable, secure, and production-ready applications.
+                                        </p>
 
                     <div style="margin-bottom: 1.5rem;">
                         <a href="files/Nabin_Dhakal_Resume.html" target="_blank" class="btn btn-primary" style="padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 8px; text-decoration: none; display: inline-block; background-color: #7466aa; color: white; transition: all 0.3s ease;" title="Download my resume">
@@ -2887,54 +2915,78 @@
     </section>
 
     <!-- Coursework Section -->
-    <section id="coursework" class="coursework-section">
-        <div class="container">
-            <h2 class="section-title">Relevant Coursework</h2>
-            <div class="coursework-grid">
-                <div class="course-card">
-                    <div class="course-code">CS 201</div>
-                    <div class="course-name">Java</div>
-                    <div class="course-description">Object-Oriented Programming, data structures, and application development fundamentals.</div>
-                    <div class="course-skills">
-                        <span class="course-skill-tag">OOP</span>
-                        <span class="course-skill-tag">Data Structures</span>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-code">CS 202</div>
-                    <div class="course-name">Python</div>
-                    <div class="course-description">Python programming, scripting, automation, and general-purpose development.</div>
-                    <div class="course-skills">
-                        <span class="course-skill-tag">Scripting</span>
-                        <span class="course-skill-tag">Automation</span>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-code">DB 301</div>
-                    <div class="course-name">Database SQL</div>
-                    <div class="course-description">SQL queries, database design, normalization, and transaction management.</div>
-                    <div class="course-skills">
-                        <span class="course-skill-tag">SQL</span>
-                        <span class="course-skill-tag">Database Design</span>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-code">NET 401</div>
-                    <div class="course-name">Networking Basic CISCO</div>
-                    <div class="course-description">Network fundamentals, routing, switching, and CISCO networking concepts.</div>
-                    <div class="course-skills">
-                        <span class="course-skill-tag">Networking</span>
-                        <span class="course-skill-tag">CISCO</span>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <div class="course-code">WEB 501</div>
-                    <div class="course-name">Java Spring Boot</div>
-                    <div class="course-description">Spring Boot framework, REST APIs, microservices, and enterprise application development.</div>
-                    <div class="course-skills">
-                        <span class="course-skill-tag">Spring Boot</span>
-                        <span class="course-skill-tag">REST API</span>
-                    </div>
+        <!-- ...existing code... -->
+        <style>
+            /* Responsive layout for all sections */
+            @media (max-width: 991px) {
+                .container {
+                    max-width: 98vw;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+                .row {
+                    flex-direction: column !important;
+                }
+                .gallery-grid, .timeline, .row.g-4 {
+                    display: block !important;
+                }
+                .gallery-item, .interest-card, .info-card, .timeline-item {
+                    margin-bottom: 24px !important;
+                    width: 100% !important;
+                }
+                .contact-card > div[style*="grid-template-columns"] {
+                    display: block !important;
+                }
+                .contact-card > div[style*="grid-template-columns"] > div {
+                    margin-bottom: 32px !important;
+                }
+            }
+            @media (max-width: 600px) {
+                h1, .section-title {
+                    font-size: 2rem !important;
+                }
+                .hero-title {
+                    font-size: 2.2rem !important;
+                }
+                .hero-description, .section-subtitle {
+                    font-size: 1rem !important;
+                }
+                .profile-image-container img {
+                    width: 120px !important;
+                    height: 120px !important;
+                }
+                .contact-card {
+                    padding: 1rem !important;
+                }
+                .contact-card > div[style*="grid-template-columns"] {
+                    display: block !important;
+                }
+                .contact-card > div[style*="grid-template-columns"] > div {
+                    margin-bottom: 24px !important;
+                }
+                .gallery-grid {
+                    display: block !important;
+                }
+                .gallery-item {
+                    width: 100% !important;
+                }
+                .footer-social {
+                    flex-wrap: wrap !important;
+                }
+                .footer-social a {
+                    margin: 0 8px 8px 0 !important;
+                }
+            }
+            img, .profile-image-container img {
+                max-width: 100%;
+                height: auto;
+            }
+            .container, .contact-card, .gallery-grid, .row {
+                box-sizing: border-box;
+            }
+        </style>
+    <!-- Only one contact section remains at the bottom -->
+    <!-- ...existing code... -->
                 </div>
             </div>
         </div>
@@ -3232,42 +3284,6 @@
         </div>
     </section>
 
-    <!-- GitHub Stats Section -->
-    <section id="github-stats" class="gallery-section" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 80px 0;">
-        <div class="container">
-            <div class="floating-decoration decoration-sparkle" style="top: 10%; left: 5%;">⭐</div>
-            <div class="floating-decoration decoration-heart" style="bottom: 20%; right: 8%;">💻</div>
-            
-            <h2 class="section-title">GitHub Activity</h2>
-            <p class="section-subtitle">Real-time stats from my GitHub profile</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px;">
-                <div class="info-card" style="text-align: center; padding: 30px;">
-                    <div style="font-size: 48px; color: #7466aa; margin-bottom: 10px;">📊</div>
-                    <h3 id="github-repos" style="font-size: 36px; color: #333; margin: 10px 0;">--</h3>
-                    <p style="color: #666; font-size: 16px;">Public Repositories</p>
-                </div>
-                <div class="info-card" style="text-align: center; padding: 30px;">
-                    <div style="font-size: 48px; color: #7466aa; margin-bottom: 10px;">👥</div>
-                    <h3 id="github-followers" style="font-size: 36px; color: #333; margin: 10px 0;">--</h3>
-                    <p style="color: #666; font-size: 16px;">Followers</p>
-                </div>
-                <div class="info-card" style="text-align: center; padding: 30px;">
-                    <div style="font-size: 48px; color: #7466aa; margin-bottom: 10px;">🌟</div>
-                    <h3 id="github-gists" style="font-size: 36px; color: #333; margin: 10px 0;">--</h3>
-                    <p style="color: #666; font-size: 16px;">Public Gists</p>
-                </div>
-            </div>
-            
-            <!-- Daily Quote -->
-            <div class="info-card" style="margin-top: 40px; padding: 30px; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                <p id="nepali-date" style="font-size: 15px; margin-bottom: 18px; color: #ffe082; font-weight: 500;">Loading Nepali date...</p>
-                <div style="font-size: 36px; margin-bottom: 15px;">💡</div>
-                <p id="daily-quote" style="font-size: 20px; font-style: italic; line-height: 1.6; margin-bottom: 10px;">Loading inspirational quote...</p>
-                <p id="quote-author" style="font-size: 14px; opacity: 0.9;">-- Anonymous</p>
-            </div>
-        </div>
-    </section>
 
     <!-- GitHub Repositories Section -->
 
@@ -3285,7 +3301,7 @@
     <div class="profile-modal" id="profileModal" aria-hidden="true">
         <div class="profile-modal-content" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
             <button class="profile-modal-close" aria-label="Close profile photo"><i class="fas fa-times"></i></button>
-            <img src="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg" alt="Profile photo of Nabin Dhakal" class="profile-modal-img" onerror="this.src='https://via.placeholder.com/900x900/7466aa/ffffff?text=ND'">
+            <img src="https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg" alt="Profile photo of Nabin Dhakal" class="profile-modal-img" loading="lazy" onerror="this.src='https://via.placeholder.com/900x900/7466aa/ffffff?text=ND'">
             <h3 id="profileModalTitle" style="text-align:center; margin-top: 0.75rem;">Profile Photo</h3>
         </div>
     </div>
@@ -3316,7 +3332,6 @@
                         <h4 style="color: #7466aa; margin-bottom: 15px; font-weight: 600; font-size: 1.1rem;">📧 Email</h4>
                         <p style="margin-bottom: 0;"><a href="mailto:cpnnabingovnp@gmail.com" style="color: #7466aa; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block;">cpnnabingovnp@gmail.com</a></p>
                     </div>
-                    
                     <div style="animation: fadeInCard 0.6s ease 0.2s both;">
                         <h4 style="color: #7466aa; margin-bottom: 20px; font-weight: 600; font-size: 1.1rem;">Send a Message</h4>
                         <form action="https://formspree.io/f/xkowboke" method="POST" style="display: flex; flex-direction: column; gap: 15px; margin-top: 1rem;">
@@ -3340,6 +3355,7 @@
                             </a>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -3367,12 +3383,15 @@
                 <a href="https://www.facebook.com/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                     <i class="fab fa-facebook"></i>
                 </a>
+                <a href="https://www.facebook.com/tribebsi" target="_blank" rel="noopener noreferrer" aria-label="TribeBSI Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
                 <a href="https://www.snapchat.com/add/cpnnabin" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
                     <i class="fab fa-snapchat"></i>
                 </a>
             </div>
-            <p>&copy; 2025 Nabin Dhakal. All Rights Reserved.</p>
-            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Built with 💻 and ☕ in Nepal</p>
+            <p id="copyright-year"></p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">Built with <span style="font-size:1.1em;">💻</span> and <span style="font-size:1.1em;">☕</span> in Nepal</p>
         </div>
     </footer>
 
@@ -3385,7 +3404,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Custom Cursor
+                // Custom Cursor
+                // Set copyright year automatically
+                document.addEventListener('DOMContentLoaded', function() {
+                    var year = new Date().getFullYear();
+                    var copyright = document.getElementById('copyright-year');
+                    if (copyright) {
+                        copyright.innerHTML = `&copy; ${year} Nabin Dhakal. All Rights Reserved.`;
+                    }
+                });
         const cursor = document.createElement('div');
         cursor.className = 'custom-cursor';
         document.body.appendChild(cursor);
@@ -3592,11 +3619,57 @@
         });
 
         // Add glitch effect to title
+
+        // Fetch Nepali and English date for navbar
+        (function() {
+            const nepaliDateText = document.getElementById('nepali-date-text');
+            const englishDateText = document.getElementById('english-date-text');
+            if (!nepaliDateText || !englishDateText) return;
+            // Set English date
+            const ad = new Date();
+            const enOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+            englishDateText.textContent = ad.toLocaleDateString('en-GB', enOptions);
+
+            // Try Nepali date API first
+            fetch('https://bikram-sambat-api.vercel.app/api/today')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.bs) {
+                        nepaliDateText.textContent = data.bs;
+                    } else {
+                        throw new Error('No bs field');
+                    }
+                })
+                .catch(() => {
+                    // Fallback: approximate BS date in JS
+                    const bsMonths = ['बैशाख', 'जेठ', 'असार', 'श्रावण', 'भदौ', 'आश्विन', 'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फाल्गुण', 'चैत्र'];
+                    const days = ['आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार', 'बिहीबार', 'शुक्रबार', 'शनिबार'];
+                    function toNepaliNumber(num) {
+                        return num.toString().replace(/[0-9]/g, d => '०१२३४५६७८९'[d]);
+                    }
+                    let bsYear = ad.getFullYear() + 57;
+                    let bsMonth = ad.getMonth() + 9;
+                    let bsDay = ad.getDate() + 17;
+                    if (bsDay > 30) { bsDay -= 30; bsMonth++; }
+                    if (bsMonth > 12) { bsMonth -= 12; bsYear++; }
+                    const dayName = days[ad.getDay()];
+                    const monthName = bsMonths[(bsMonth-1)%12];
+                    nepaliDateText.textContent = `${monthName} ${toNepaliNumber(bsDay)}, ${toNepaliNumber(bsYear)}, ${dayName}`;
+                });
+        })();
         const heroTitle = document.querySelector('.hero-title');
         if (heroTitle) {
             heroTitle.classList.add('glitch');
             heroTitle.setAttribute('data-text', heroTitle.textContent);
         }
+        
+            // Set current date in hero section
+            const heroDate = document.getElementById('heroDate');
+            if (heroDate) {
+                const now = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                heroDate.textContent = now.toLocaleDateString(undefined, options);
+            }
 
         // Gallery hover effect enhancement
         document.querySelectorAll('.gallery-item').forEach(item => {
