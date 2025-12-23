@@ -4,95 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Page Not Found</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #f8f8fc 0%, #eae6fa 100%);
-            color: #7466aa;
-            text-align: center;
-            padding: 0;
+        html, body {
+            height: 100%;
             margin: 0;
-            min-height: 100vh;
+            padding: 0;
+        }
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #fafafa;
+            color: #888;
+            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        .error-container {
-            background: rgba(255,255,255,0.95);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(116,102,170,0.10), 0 1.5px 8px rgba(34,34,34,0.08);
-            padding: 3rem 2.5rem 2.5rem 2.5rem;
-            margin: 2rem;
-            max-width: 400px;
-            width: 100%;
-            position: relative;
+        .face {
+            font-size: 6rem;
+            color: #bbb;
+            margin-bottom: 1.5rem;
+            user-select: none;
         }
-        .error-emoji {
-            font-size: 3.5rem;
-            margin-bottom: 1.2rem;
-            animation: float 2.5s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-        h1 {
-            font-size: 3.2rem;
+        .code {
+            font-size: 4rem;
+            font-weight: 400;
+            color: #aaa;
             margin-bottom: 0.5rem;
-            color: #7466aa;
-            font-weight: 700;
-            letter-spacing: 2px;
         }
-        p {
-            font-size: 1.18rem;
-            margin-bottom: 2.2rem;
-            color: #4b5563;
+        .notfound {
+            font-size: 1.6rem;
+            color: #aaa;
+            margin-bottom: 1.2rem;
+        }
+        .desc {
+            font-size: 1.05rem;
+            color: #bbb;
+            margin-bottom: 2.5rem;
+            max-width: 420px;
+            line-height: 1.6;
         }
         a {
-            color: #fff;
-            background: linear-gradient(90deg, #7466aa 0%, #21807a 100%);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.85rem 2.2rem;
-            border-radius: 8px;
-            font-size: 1.08rem;
-            box-shadow: 0 2px 12px rgba(116,102,170,0.10);
-            transition: background 0.2s, transform 0.2s;
-            display: inline-block;
+            color: #888;
+            text-decoration: underline;
+            font-size: 1.05rem;
         }
         a:hover {
-            background: linear-gradient(90deg, #21807a 0%, #7466aa 100%);
-            transform: translateY(-2px) scale(1.04);
-        }
-        .footer {
-            margin-top: 2.5rem;
-            font-size: 0.98rem;
-            color: #a89dde;
-            opacity: 0.7;
+            color: #555;
         }
         @media (max-width: 600px) {
-            .error-container {
-                padding: 2rem 1rem 1.5rem 1rem;
-            }
-            h1 {
-                font-size: 2.1rem;
-            }
-            .error-emoji {
-                font-size: 2.2rem;
-            }
+            .face { font-size: 3.5rem; }
+            .code { font-size: 2.2rem; }
+            .notfound { font-size: 1.1rem; }
+            .desc { font-size: 0.98rem; }
         }
     </style>
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-emoji">🚫</div>
-        <h1>404</h1>
-        <p>Sorry, the page you are looking for does not exist.<br>Try checking the URL or return to the homepage.</p>
-        <a href="index.html">Go back to Home</a>
+        <div class="face error-emoji" aria-label="404 face" style="padding-bottom:0.5rem;">
+            <!-- Hand-drawn dead emoji SVG from vecteezy.com, license: free for personal use -->
+            <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto;">
+                <circle cx="48" cy="48" r="44" stroke="#bbb" stroke-width="4" fill="#fafafa"/>
+                <ellipse cx="34" cy="44" rx="6" ry="8" fill="#bbb"/>
+                <ellipse cx="62" cy="44" rx="6" ry="8" fill="#bbb"/>
+                <path d="M34 44 l4 4 m-4 0 l4 -4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                <path d="M62 44 l4 4 m-4 0 l4 -4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                <path d="M36 68 Q48 78 60 68" stroke="#bbb" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+        </div>
+    <div class="code">404</div>
+    <div class="notfound">Page not found</div>
+    <div class="desc">
+        The page you are looking for doesn't exist or another error occurred.<br>
+        Go back, or head over to <a href="Home" class="back-link" id="dynamic-home-link"><span id="dynamic-home-text">homepage</span></a> to choose a new direction.
     </div>
-    
     <script>
         // Animate emoji on hover
         const emoji = document.querySelector('.error-emoji');
@@ -105,9 +93,8 @@
                 emoji.style.transform = '';
             });
         }
-
-        // Ripple effect on button click
-        const btn = document.querySelector('a');
+        // Ripple effect on link click
+        const btn = document.querySelector('.back-link');
         if (btn) {
             btn.addEventListener('click', function(e) {
                 const ripple = document.createElement('span');
@@ -119,7 +106,6 @@
                 ripple.style.borderRadius = '50%';
                 ripple.style.transform = 'translate(-50%, -50%) scale(0)';
                 ripple.style.pointerEvents = 'none';
-                ripple.style.position = 'absolute';
                 ripple.style.zIndex = '2';
                 ripple.style.transition = 'transform 0.5s, opacity 0.5s';
                 btn.style.position = 'relative';
@@ -131,8 +117,7 @@
                 setTimeout(() => ripple.remove(), 600);
             });
         }
-
-        // Confetti effect on button click
+        // Confetti effect on link click
         function confettiBurst(x, y) {
             for (let i = 0; i < 24; i++) {
                 const conf = document.createElement('div');
@@ -166,6 +151,15 @@
                 confettiBurst(e.clientX, e.clientY);
             });
         }
+        // Dynamically set the homepage link text to match the href
+        const homeLink = document.getElementById('dynamic-home-link');
+        const homeText = document.getElementById('dynamic-home-text');
+        if (homeLink && homeText) {
+            const href = homeLink.getAttribute('href');
+            if (href) homeText.textContent = href;
+        }
+    </script>
+</body>
     </script>
 </body>
 </html>
