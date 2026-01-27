@@ -1,0 +1,29 @@
+/* responsive.css - small-screen timeline improvements */
+
+@media (max-width: 767px) {
+  .timeline-line {
+    left: 1.25rem !important;
+    transform: none !important;
+  }
+
+  .timeline-dot {
+    left: 1.25rem !important;
+    transform: none !important;
+  }
+
+  .timeline-item {
+    padding-left: 2.75rem;
+  }
+
+  .timeline-date {
+    text-align: left !important;
+    padding-right: 0 !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+}

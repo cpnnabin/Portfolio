@@ -1,0 +1,85 @@
+# robots.txt for Nabin Dhakal Portfolio
+User-agent: *
+Allow: /
+Disallow: /files/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://cpnnabin.github.io/sitemap.xml
+
+# Crawl delay (requests per second)
+Crawl-delay: 1
+
+# Allow specific bots with different rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 5
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 3
+
+# Block specific bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Development/staging environments
+User-agent: *
+Disallow: /staging/
+Disallow: /test/
+Disallow: /dev/
+Disallow: /beta/
+
+# File types to block
+User-agent: *
+Disallow: /*.pdf$
+Disallow: /*.docx$
+Disallow: /*.xlsx$
+Disallow: /*.pptx$
+
+# Query parameters to ignore
+User-agent: *
+Disallow: /*?*
+Disallow: /*&*
+Disallow: /*#*
+
+# Clean URLs only
+Clean-param: utm_source /index.html
+Clean-param: utm_medium /index.html
+Clean-param: utm_campaign /index.html
+Clean-param: fbclid /index.html
+Clean-param: gclid /index.html
+
+# Mobile-specific rules
+User-agent: iPhone
+Allow: /
+Crawl-delay: 2
+
+User-agent: Android
+Allow: /
+Crawl-delay: 2

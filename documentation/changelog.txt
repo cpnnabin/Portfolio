@@ -1,0 +1,8 @@
+Changelog
+
+2026-01-27
+- Added repo-style asset structure: assets/css and assets/js
+- Moved inline CSS into assets/css/components.css, main.css, responsive.css
+- Moved inline JavaScript into assets/js/main.js
+- Added error pages: error-pages/403.html, 404.html, 500.html
+- Updated index.html to reference external CSS/JS and assets/images path
