@@ -1,0 +1,34 @@
+# .gitignore for Portfolio-main
+# Ignore node_modules, logs, OS files, and build artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.vscode/
+__pycache__/
+dist/
+build/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.bak
+*.tmp
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+# Cloudflare/Workers
+wrangler.log
+worker-*.js
+worker-*.map
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+coverage/
+*.sqlite
+*.db
+*.local

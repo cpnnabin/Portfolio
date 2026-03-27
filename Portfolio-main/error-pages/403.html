@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>403 - Forbidden | cpnnabin</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+
+  <style>
+    .error-emoji { user-select: none; }
+    .ripple-span {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: rgba(96,165,250,0.25);
+      border-radius: 9999px;
+      transform: translate(-50%, -50%) scale(0);
+      pointer-events: none;
+      z-index: 2;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans antialiased min-h-screen flex items-center justify-center">
+  <main class="container mx-auto px-6 py-20">
+    <div class="max-w-2xl mx-auto glass-effect p-10 rounded-2xl text-center relative overflow-hidden">
+
+      <!-- Emoji Face -->
+      <div class="w-24 h-24 mx-auto mb-6 error-emoji transition-transform duration-300">
+        <svg width="96" height="96" viewBox="0 0 96 96" fill="none"
+             xmlns="http://www.w3.org/2000/svg" class="mx-auto">
+          <circle cx="48" cy="48" r="44" stroke="#9CA3AF" stroke-width="4" fill="transparent"/>
+          <ellipse cx="34" cy="44" rx="6" ry="8" fill="#9CA3AF"/>
+          <ellipse cx="62" cy="44" rx="6" ry="8" fill="#9CA3AF"/>
+          <rect x="30" y="60" width="36" height="8" rx="4" fill="#9CA3AF"/>
+        </svg>
+      </div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center">
+          <i class="fas fa-ban text-red-400 text-2xl"></i>
+        </div>
+        <div class="text-left">
+          <h1 class="text-3xl font-bold">403 - Forbidden</h1>
+          <p class="text-gray-400 mt-1">You don’t have permission to access this page.</p>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="text-gray-400 mt-6 leading-relaxed">
+        Looks like this area is off‑limits. Either the link is broken, or you tried to open something that needs special access.
+      </p>
+
+      <!-- Actions -->
+      <div class="mt-10 flex flex-wrap justify-center gap-4">
+        <a href="../index.html" id="backHomeBtn"
+           class="relative overflow-hidden bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-flex items-center">
+          <i class="fas fa-house mr-2"></i> Back to Home
+        </a>
+        <a href="mailto:cpnnabingovnp@gmail.com"
+           class="border border-gray-700 text-gray-200 px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center">
+          <i class="fas fa-envelope mr-2"></i> Contact
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Emoji hover animation
+    const emoji = document.querySelector('.error-emoji');
+    if (emoji) {
+      emoji.addEventListener('mouseenter', () => {
+        emoji.style.transform = 'scale(1.2) rotate(-10deg)';
+      });
+      emoji.addEventListener('mouseleave', () => {
+        emoji.style.transform = 'scale(1) rotate(0deg)';
+      });
+    }
+
+    // Ripple + confetti on Back to Home
+    const btn = document.getElementById('backHomeBtn');
+
+    function confettiBurst(x, y) {
+      for (let i = 0; i < 24; i++) {
+        const conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = x + 'px';
+        conf.style.top = y + 'px';
+        conf.style.width = '8px';
+        conf.style.height = '8px';
+        conf.style.borderRadius = '50%';
+        conf.style.background = `hsl(${Math.random()*360},70%,70%)`;
+        conf.style.opacity = '0.9';
+        conf.style.pointerEvents = 'none';
+        conf.style.zIndex = '9999';
+        document.body.appendChild(conf);
+
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 60 + Math.random() * 60;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+
+        conf.animate([
+          { transform: 'translate(0,0) scale(1)', opacity: 0.9 },
+          { transform: `translate(${dx}px,${dy}px) scale(0.6)`, opacity: 0.1 }
+        ], {
+          duration: 900 + Math.random()*400,
+          easing: 'cubic-bezier(0.68,-0.55,0.27,1.55)'
+        });
+
+        setTimeout(() => conf.remove(), 1200);
+      }
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple-span';
+        ripple.style.left = (e.clientX - rect.left) + 'px';
+        ripple.style.top = (e.clientY - rect.top) + 'px';
+        btn.appendChild(ripple);
+
+        setTimeout(() => {
+          ripple.style.transform = 'translate(-50%, -50%) scale(2.8)';
+          ripple.style.opacity = '0';
+        }, 10);
+
+        setTimeout(() => ripple.remove(), 600);
+        confettiBurst(e.clientX, e.clientY);
+      });
+    }
+  </script>
+</body>
+</html>
