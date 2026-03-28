@@ -1,8 +1,0 @@
-name = "portfolio-worker"
-main = "Nabindhakal_final.JS"
-compatibility_date = "2024-03-27"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "portfolio"
-database_id = "56a2ce6c-17ed-4e3e-a885-ce0699aac212"
