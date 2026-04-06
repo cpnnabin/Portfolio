@@ -1,0 +1,34 @@
+# .gitignore for Portfolio-main
+# Node modules (if any future use)
+node_modules/
+# OS generated files
+.DS_Store
+Thumbs.db
+# Logs
+*.log
+# IDE and editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+# Environment files
+.env
+# Compiled output
+/dist/
+/build/
+# Misc
+*.bak
+*.tmp
+# System files
+Desktop.ini
+# Cache
+.cache/
+# npm debug files
+npm-debug.log*
+# Mac system files
+.AppleDouble
+.LSOverride
+# Windows system files
+$RECYCLE.BIN/
+# VS Code settings
+.history/

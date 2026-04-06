@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Homepage - Highest Priority -->
+    <url>
+        <loc>https://cpnnabin.github.io/</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- Main Pages -->
+    <url>
+        <loc>https://cpnnabin.github.io/#home</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/#about</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/#interests</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/#journey</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/#gallery</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/#contact</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Resume/Downloadable Files -->
+    <url>
+        <loc>https://cpnnabin.github.io/files/Nabin_Dhakal_Resume.html</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Error Pages (for completeness) -->
+    <url>
+        <loc>https://cpnnabin.github.io/404.html</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/500.html</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
+    
+    <!-- External Profiles (for reference) -->
+    <url>
+        <loc>https://github.com/cpnnabin</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://linkedin.com/in/cpnnabin</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://twitter.com/cpnnabin</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.youtube.com/@cpnnabin</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <!-- Image Assets (for image sitemap if needed) -->
+    <url>
+        <loc>https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+            <image:loc>https://pbs.twimg.com/profile_images/1656601652009504769/ToJZH8X9_400x400.jpg</image:loc>
+            <image:title>Nabin Dhakal - Profile Photo</image:title>
+            <image:caption>Profile photo of Nabin Dhakal, Software Engineer</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://cpnnabin.github.io/files/7466AA.jpg</loc>
+        <lastmod>2024-12-23</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+</urlset>

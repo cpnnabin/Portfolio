@@ -1,0 +1,22 @@
+name = "nabindhakal-portfolio"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio"
+database_id = "56a2ce6c-17ed-4e3e-a885-ce0699aac212"
+
+[[routes]]
+pattern = "nabindhakal28.com.np"
+custom_domain = true
+override_existing_dns_record = true
+
+# Access your site
+# Main: https://your-worker-name.your-subdomain.workers.dev
+# Resume: https://your-worker-name.your-subdomain.workers.dev/resume
+
+
+
+
