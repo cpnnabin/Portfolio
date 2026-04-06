@@ -18,5 +18,3 @@ override_existing_dns_record = true
 # Resume: https://your-worker-name.your-subdomain.workers.dev/resume
 
 
-
-
