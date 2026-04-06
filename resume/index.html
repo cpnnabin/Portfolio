@@ -1,806 +1,676 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nabin Dhakal - Resume</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nabin Dhakal - Resume</title>
+    </head>
+    <body>
+    <script>
+    // ════════════════════════════════════════════
+    //  DATA
+    // ════════════════════════════════════════════
+    const RESUME_DATA = {
+        name: 'Nabin Dhakal',
+        role: 'Java Developer',
+        tagline: 'Building reliable Java and SQL solutions with clean, maintainable code.',
+        photo: '../7466AA.jpg',
+        contact: [
+            { icon: '📞', label: '+977-9869596970',          href: 'tel:+977-9869596970' },
+            { icon: '📧', label: 'info@nabindhakal28.com.np', href: 'mailto:info@nabindhakal28.com.np' },
+            { icon: '📍', label: 'Dhapakhel, Lalitpur',       href: null },
+            { icon: '🔗', label: 'LinkedIn',                  href: 'https://www.linkedin.com/in/cpnnabin/', target: '_blank' },
+            { icon: '💻', label: 'GitHub',                    href: 'https://github.com/cpnnabin',           target: '_blank' },
+        ],
+        summary: `I am a dedicated Java Developer aspiring to join an organization where I can fully utilize my
+            technical skills, learn new technologies, apply innovative ideas, and make a significant contribution
+            to organizational success while building a strong career growth path. With foundational knowledge of
+            database management using SQL and MySQL, and proficiency in Java Object-Oriented Programming,
+            I am prepared to develop robust and scalable applications.`,
+        skills: ['Java · OOP', 'SQL · MySQL', 'HTML5', 'CSS3', 'Debugging & Testing', 'Responsive Layouts'],
+        projects: [
+            {
+                title: 'Library Management System',
+                subtitle: 'Java & MySQL | 2024–2025',
+                bullets: [
+                    'Developed a basic application to manage book records and user borrowing history',
+                    'Implemented using Java for backend logic and MySQL for database management',
+                    'Designed relational database schema for efficient data retrieval and management',
+                ],
+            },
+        ],
+        experience: [
+            {
+                title: 'Java Backend Developer Intern',
+                subtitle: 'MetaHorizon, Baneshwor, Kathmandu | Jun 2025 – Sep 2025',
+                bullets: [
+                    'Built backend features and REST APIs using Java',
+                    'Designed and implemented database integrations with MySQL',
+                    'Collaborated with team to develop scalable application features',
+                ],
+            },
+        ],
+        education: [
+            {
+                title: 'BSc. Software Engineer',
+                subtitle: 'Patan College for Professional Studies, Kupandol, Lalitpur',
+                content: 'Expected: 2025 – 2028',
+            },
+            {
+                title: '+2 in Science',
+                subtitle: 'Global School of Science, Mid-Baneshwor, Kathmandu',
+                content: '2021 – 2023',
+            },
+        ],
+    };
+
+    // ════════════════════════════════════════════
+    //  STYLE INJECTION
+    // ════════════════════════════════════════════
+    const CSS = `
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+        font-family: 'Poppins', 'Segoe UI', sans-serif;
+        line-height: 1.6;
+        color: #222;
+        background: #f6f7fb;
+        padding: 12px;
+    }
+
+    /* ── TOOLBAR ── */
+    #toolbar {
+        text-align: center;
+        margin-bottom: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    #toolbar button {
+        padding: 9px 18px;
+        background: #7466aa;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        font-family: inherit;
+        transition: background .25s, transform .2s;
+        min-height: 38px;
+    }
+    #toolbar button:hover  { background: #5e4f8e; transform: translateY(-1px); }
+    #toolbar button:active { transform: scale(.96); }
+
+    /* ── CONTAINER ── */
+    #resume {
+        max-width: 9.5in;
+        margin: 8px auto 12px;
+        padding: 32px 36px;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,.10);
+        border-radius: 10px;
+    }
+
+    /* ── HEADER ── */
+    #r-header {
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        position: relative;
+    }
+    #r-header::after {
+        content: '';
+        position: absolute;
+        left:0; bottom:0;
+        width:100%; height:4px;
+        background: linear-gradient(90deg,#7466aa,#b1a7e0);
+        border-radius: 6px;
+    }
+    #header-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 10px;
+        flex-wrap: nowrap;
+    }
+    #header-photo img {
+        width: 82px; height: 82px;
+        border-radius: 50%;
+        border: 3px solid #7466aa;
+        object-fit: cover;
+        box-shadow: 0 6px 14px rgba(116,102,170,.25);
+        display: block;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform .25s, box-shadow .25s;
+    }
+    #header-photo img:hover {
+        transform: scale(1.04);
+        box-shadow: 0 10px 18px rgba(116,102,170,.32);
+    }
+    #header-content {
+        flex: 1;
+        padding: 0 14px;
+        text-align: left;
+    }
+    #headline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    #r-name {
+        font-size: 26px;
+        color: #5b4d95;
+        font-weight: 800;
+        cursor: pointer;
+    }
+    .role-pill {
+        padding: 3px 11px;
+        background: #7466aa;
+        color: #fff;
+        border-radius: 12px;
+        font-size: 11.5px;
+        font-weight: 700;
+    }
+    #r-tagline { font-size: 12.5px; color: #555; margin-top: 4px; }
+
+    /* ── QR ── */
+    #qr-card {
+        text-align: center;
+        padding-left: 14px;
+        border-left: 1px solid #e6e1f3;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+    #qr-card img {
+        width: 72px; height: 72px;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto 3px;
+    }
+    #qr-card small { font-size: 10px; color: #5b4d95; display:block; }
+
+    /* ── CONTACT BAR ── */
+    #contact-bar {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+        font-size: 11.5px;
+        color: #555;
+        margin-top: 6px;
+    }
+    #contact-bar span { white-space: nowrap; }
+    #contact-bar a    { color: #7466aa; text-decoration: none; }
+    #contact-bar a:hover { text-decoration: underline; }
+
+    /* ── BODY GRID ── */
+    #r-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 28px;
+    }
+    #r-body .full { grid-column: 1 / -1; }
+
+    /* ── SECTION ── */
+    .r-section { margin-bottom: 4px; animation: fadeUp .45s ease both; }
+    @keyframes fadeUp {
+        from { opacity:0; transform:translateY(8px); }
+        to   { opacity:1; transform:translateY(0); }
+    }
+    .r-section:nth-child(1){animation-delay:.05s}
+    .r-section:nth-child(2){animation-delay:.10s}
+    .r-section:nth-child(3){animation-delay:.15s}
+    .r-section:nth-child(4){animation-delay:.20s}
+    .r-section:nth-child(5){animation-delay:.25s}
+
+    .section-title {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #7466aa;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+        border-bottom: 2px solid #7466aa;
+        padding-bottom: 3px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        user-select: none;
+        width: 100%;
+    }
+    .section-title .s-icon  { font-size: 13px; }
+    .section-title .s-arrow {
+        font-size: 9px;
+        color: #bbb;
+        margin-left: auto;
+        transition: transform .2s;
+        display: inline-block;
+    }
+    .r-section.collapsed .s-arrow  { transform: rotate(-90deg); }
+    .r-section.collapsed .s-body   { display: none; }
+
+    /* ── ENTRY ── */
+    .entry {
+        margin-bottom: 8px;
+        padding: 8px 8px 8px 11px;
+        border-left: 3px solid #e7e7e7;
+        transition: background .2s, border-color .2s;
+    }
+    .entry:last-child { margin-bottom: 0; }
+    .entry:hover      { border-left-color: #7466aa; background: #f7f7ff; }
+    .entry.collapsed .entry-body { display: none; }
+
+    .entry-title {
+        font-weight: 600;
+        font-size: 12.5px;
+        color: #333;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .entry-title::after { content:'•'; color:#ccc; font-weight:400; font-size:11px; }
+    .entry-title.active { color: #7466aa; }
+    .entry-subtitle { font-size:11px; color:#666; font-style:italic; margin-top:1px; }
+    .entry-content  { font-size:11.5px; margin-top:4px; line-height:1.45; }
+
+    ul { margin-left:16px; font-size:11.5px; line-height:1.45; }
+    li { margin-bottom:3px; }
+
+    /* ── SKILLS ── */
+    .skill-tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .skill-tag {
+        padding: 5px 12px;
+        background: #fafafa;
+        border: 1px solid #e2e2ec;
+        border-radius: 16px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 11.5px;
+        color: #333;
+        transition: background .2s, border-color .2s, color .2s;
+    }
+    .skill-tag:hover  { background:#f0edf9; border-color:#cfc6e9; }
+    .skill-tag.active { background:#7466aa; border-color:#7466aa; color:#fff; }
+
+    /* ── PLAIN SUMMARY ── */
+    .plain-text { font-size:11.5px; line-height:1.55; color:#333; }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width:1024px) {
+        #resume  { max-width:100%; padding:20px; }
+        #r-body  { grid-template-columns:1fr; }
+        #r-body .full { grid-column:1; }
+    }
+    @media (max-width:767px) {
+        body     { padding:8px; }
+        #resume  { padding:16px; margin:8px 0; }
+        #header-main { flex-wrap:wrap; }
+        #qr-card { border-left:none; padding-left:0; }
+    }
+    @media (max-width:576px) {
+        body     { padding:6px; }
+        #resume  { padding:12px; }
+        #header-main { flex-direction:column; align-items:center; }
+        #header-content { text-align:center; padding:0; }
+        #headline { justify-content:center; }
+        #contact-bar { flex-direction:column; align-items:center; font-size:10px; }
+        #header-photo img { width:60px; height:60px; }
+        #qr-card img { width:60px; height:60px; }
+    }
+    @media (hover:none) and (pointer:coarse) {
+        #toolbar button { min-height:42px; }
+        #toolbar button:hover { transform:none; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+        * { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+    }
+
+    /* ══ PRINT ══ */
+    @media print {
+        @page { size:9.5in 13in; margin:.4in .45in; }
+
+        html,body {
+            width:9.5in; background:#fff!important;
+            padding:0!important; margin:0!important;
+            -webkit-print-color-adjust:exact;
+            print-color-adjust:exact;
         }
-        body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #222;
-            background: #f6f7fb;
-            min-height: 100vh;
-            padding: 12px;
+        #toolbar  { display:none!important; }
+        #resume {
+            margin:0!important; padding:0!important;
+            box-shadow:none!important; border-radius:0!important;
+            max-width:100%!important; width:100%!important;
         }
-        .toolbar {
-            text-align: center;
-            margin-bottom: 16px;
+
+        /* header row stays horizontal */
+        #r-header   { margin-bottom:14px!important; padding-bottom:10px!important; }
+        #header-main {
+            display:flex!important; flex-direction:row!important;
+            align-items:center!important; justify-content:space-between!important;
+            gap:14px!important; flex-wrap:nowrap!important; margin-bottom:8px!important;
         }
-        .toolbar button {
-            padding: 9px 18px;
-            margin: 0 8px;
-            background-color: #7466aa;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: background-color 0.25s ease, transform 0.2s ease;
+        #header-photo img {
+            width:75px!important; height:75px!important;
+            border-radius:50%!important; display:block!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
-        .toolbar button:hover {
-            background-color: #5e4f8e;
-            transform: translateY(-1px);
+        #header-content { flex:1!important; padding:0 12px!important; text-align:left!important; }
+        #headline {
+            display:flex!important; flex-direction:row!important;
+            align-items:center!important; gap:8px!important; flex-wrap:nowrap!important;
         }
-        .resume-container {
-            max-width: 8.5in;
-            min-height: 10.5in;
-            margin: 8px auto 12px;
-            padding: 26px;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 16px;
-            padding: 6px 0 12px;
-            position: relative;
-        }
-        .header-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 4px;
-        }
-        .contact-header {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 14px;
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 6px;
-            line-height: 1.3;
-        }
-        .contact-header span {
-            white-space: nowrap;
-        }
-        .contact-header a {
-            color: #7466aa;
-            text-decoration: none;
-        }
-        .contact-header a:hover {
-            text-decoration: underline;
-        }
-        .header::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #7466aa, #b1a7e0);
-            border-radius: 6px;
-            transition: transform 0.25s ease, filter 0.25s ease;
-            transform-origin: left;
-        }
-        .header:hover::after {
-            transform: scaleX(1.03);
-            filter: brightness(1.05);
-        }
-        .header-photo {
-            flex-shrink: 0;
-        }
-        .header-photo img {
-            width: 78px;
-            height: 78px;
-            border-radius: 50%;
-            border: 3px solid #7466aa;
-            object-fit: cover;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(116, 102, 170, 0.25);
-        }
-        .header-photo img:hover {
-            transform: scale(1.04);
-            box-shadow: 0 10px 18px rgba(116, 102, 170, 0.3);
-        }
-        .header-content {
-            flex: 1;
-            text-align: left;
-            padding: 0 10px;
-        }
-        .headline {
-            display: flex;
-            align-items: baseline;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .header-name {
-            font-size: 24px;
-            color: #5b4d95;
-            font-weight: 800;
-            cursor: pointer;
+        #r-name {
+            font-size:22pt!important; color:#5b4d95!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
         .role-pill {
-            padding: 3px 9px;
-            background: #7466aa;
-            color: #fff;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
+            background:#7466aa!important; color:#fff!important;
+            padding:2px 10px!important; border-radius:10px!important;
+            font-size:9pt!important; white-space:nowrap!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
-        .header p {
-            font-size: 12px;
-            color: #555;
-            margin: 2px 0 0;
-            line-height: 1.3;
+        #r-tagline { font-size:10pt!important; margin-top:3px!important; }
+
+        #qr-card {
+            flex-shrink:0!important; display:block!important;
+            text-align:center!important; padding-left:12px!important;
+            border-left:1px solid #e6e1f3!important;
         }
-        .qr-card {
-            text-align: center;
-            padding: 0 0 0 12px;
-            border-left: 1px solid #e6e1f3;
-            cursor: pointer;
-            min-width: 105px;
+        #qr-card img {
+            width:65px!important; height:65px!important;
+            display:block!important; margin:0 auto 3px!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
-        .qr-card img {
-            width: 90px;
-            height: 90px;
-            display: block;
-            margin: 0 auto 6px;
-            border-radius: 6px;
-        }
-        .qr-card small {
-            font-size: 11px;
-            color: #5b4d95;
-            display: block;
+        #qr-card small {
+            font-size:8pt!important; color:#5b4d95!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
 
-        .section {
-            margin-bottom: 12px;
-            animation: fadeIn 0.5s ease;
+        #contact-bar {
+            display:flex!important; flex-direction:row!important;
+            flex-wrap:wrap!important; justify-content:center!important;
+            gap:10px!important; font-size:9.5pt!important; margin-top:6px!important;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        #contact-bar a { color:#7466aa!important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+        #r-header::after {
+            background:linear-gradient(90deg,#7466aa,#b1a7e0)!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
+
+        #r-body {
+            display:grid!important;
+            grid-template-columns:1fr 1fr!important;
+            gap:12px 24px!important;
+        }
+        #r-body .full { grid-column:1/-1!important; }
+
+        .r-section { page-break-inside:avoid; margin-bottom:8px!important; animation:none!important; }
+        .s-body     { display:block!important; }
         .section-title {
-            font-size: 13px;
-            font-weight: 700;
-            color: #7466aa;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-            border-bottom: 2px solid #7466aa;
-            padding-bottom: 4px;
-            user-select: none;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+            font-size:10pt!important; page-break-after:avoid;
+            border-bottom:2px solid #7466aa!important;
+            color:#7466aa!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
-        .section-title::before {
-            content: attr(data-icon);
-            font-size: 14px;
-        }
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        .section:nth-child(5) { animation-delay: 0.5s; }
-        .section-title::after {
-            content: '▼';
-            font-size: 10px;
-            color: #aaa;
-            transition: transform 0.2s ease;
-        }
-        .section.collapsed .section-title::after {
-            transform: rotate(-90deg);
-        }
+        .s-arrow { display:none!important; }
+
         .entry {
-            margin-bottom: 10px;
-            padding: 9px;
-            border-left: 3px solid #e7e7e7;
-            transition: background-color 0.25s ease, border-color 0.25s ease;
+            page-break-inside:avoid;
+            margin-bottom:6px!important; padding:6px 8px 6px 10px!important;
+            border-left:3px solid #e7e7e7!important;
         }
-        .entry:hover {
-            border-left-color: #7466aa;
-            background-color: #f7f7ff;
-        }
-        .entry-title {
-            font-weight: 600;
-            font-size: 12.5px;
-            color: #333;
-        }
-        .entry-subtitle {
-            font-size: 11.5px;
-            color: #666;
-            font-style: italic;
-        }
-        .entry-content {
-            font-size: 11.5px;
-            margin-top: 3px;
-            line-height: 1.45;
-        }
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            font-size: 11.5px;
-        }
+        .entry:hover { background:transparent!important; border-left-color:#e7e7e7!important; }
+        .entry-body  { display:block!important; }
+        .entry-title   { font-size:10.5pt!important; }
+        .entry-subtitle{ font-size:9pt!important; }
+        .entry-content, ul, li { font-size:9.5pt!important; }
+        .plain-text { font-size:9.5pt!important; }
+
+        .skill-tags { gap:5px!important; }
         .skill-tag {
-            padding: 6px 10px;
-            background: #fafafa;
-            border: 1px solid #e2e2ec;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-            color: #333;
-        }
-        .skill-tag:hover {
-            background: #f0edf9;
-            border-color: #cfc6e9;
+            font-size:9pt!important; padding:4px 10px!important;
+            border:1px solid #e2e2ec!important;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact;
         }
         .skill-tag.active {
-            background: #7466aa;
-            border-color: #7466aa;
-            color: #fff;
+            background:#7466aa!important; color:#fff!important;
+            border-color:#7466aa!important;
         }
-        ul {
-            margin-left: 18px;
-            font-size: 11.5px;
-            line-height: 1.45;
-        }
-        li {
-            margin-bottom: 4px;
-        }
-        .entry.collapsed > .entry-content {
-            display: none;
-        }
-        .entry-title::after {
-            content: ' •';
-            color: #aaa;
-            font-weight: 400;
-        }
-        .section.collapsed > *:not(.section-title) {
-            display: none;
-        }
-        .entry-title {
-            cursor: pointer;
-        }
-        .entry-title.active {
-            color: #7466aa;
+        a { color:#7466aa!important; text-decoration:none!important; }
+    }
+    `;
+
+    // ════════════════════════════════════════════
+    //  HELPERS
+    // ════════════════════════════════════════════
+    const el = (tag, attrs = {}, ...children) => {
+        const node = document.createElement(tag);
+        Object.entries(attrs).forEach(([k, v]) => {
+            if (k === 'cls') v.split(' ').filter(Boolean).forEach(c => node.classList.add(c));
+            else if (k === 'text') node.textContent = v;
+            else if (k === 'html') node.innerHTML = v;
+            else if (k.startsWith('on')) node.addEventListener(k.slice(2), v);
+            else node.setAttribute(k, v);
+        });
+        children.flat().forEach(c => c && node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
+        return node;
+    };
+
+    const copyText = txt =>
+        navigator.clipboard.writeText(txt).catch(() => {});
+
+    // ════════════════════════════════════════════
+    //  COMPONENT BUILDERS
+    // ════════════════════════════════════════════
+
+    /** Entry block (project / experience / education) */
+    function buildEntry(data) {
+        const titleEl = el('div', { cls: 'entry-title', text: data.title });
+        const bodyParts = [];
+
+        if (data.subtitle)
+            bodyParts.push(el('div', { cls: 'entry-subtitle', text: data.subtitle }));
+
+        if (data.bullets) {
+            const ul = el('ul');
+            data.bullets.forEach(b => ul.appendChild(el('li', { text: b })));
+            bodyParts.push(el('div', { cls: 'entry-content' }, ul));
+        } else if (data.content) {
+            bodyParts.push(el('div', { cls: 'entry-content', text: data.content }));
         }
 
-        /* ===== MOBILE RESPONSIVENESS ===== */
-        
-        /* Tablet (768px - 1024px) */
-        @media (max-width: 1024px) and (min-width: 768px) {
-            .resume-container {
-                max-width: 100%;
-                min-height: auto;
-                padding: 20px;
-            }
-            .header-main {
-                flex-direction: column;
-                gap: 12px;
-            }
-            .header-photo img {
-                width: 70px;
-                height: 70px;
-            }
-            .contact-header {
-                font-size: 10px;
-                gap: 12px;
-            }
-            .section {
-                margin-bottom: 18px;
-            }
-            .skill-pill {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-        }
+        const body = el('div', { cls: 'entry-body' }, ...bodyParts);
+        const wrapper = el('div', { cls: 'entry' }, titleEl, body);
 
-        /* Small Phone/Tablet (577px - 767px) */
-        @media (max-width: 767px) and (min-width: 577px) {
-            body {
-                padding: 8px;
-                font-size: 14px;
-            }
-            .resume-container {
-                max-width: 100%;
-                min-height: auto;
-                padding: 16px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-                border-radius: 8px;
-                margin: 8px 0 16px;
-            }
-            .toolbar {
-                margin-bottom: 12px;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-            .toolbar button {
-                padding: 8px 14px;
-                margin: 4px;
-                font-size: 12px;
-            }
-            .header {
-                margin-bottom: 14px;
-                padding: 6px 0 10px;
-            }
-            .header-main {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .header-photo img {
-                width: 65px;
-                height: 65px;
-            }
-            h1 {
-                font-size: 18px;
-            }
-            .role-pill {
-                font-size: 11px;
-                padding: 4px 10px;
-            }
-            .contact-header {
-                font-size: 9px;
-                gap: 10px;
-                margin-bottom: 5px;
-            }
-            .section-title {
-                font-size: 13px;
-                margin-bottom: 10px;
-            }
-            .entry-item, .skill-group {
-                margin-bottom: 12px;
-            }
-            .entry-title {
-                font-size: 13px;
-                margin-bottom: 4px;
-            }
-            .entry-detail {
-                font-size: 11px;
-                margin-bottom: 3px;
-            }
-            .skill-pill {
-                font-size: 11px;
-                padding: 5px 10px;
-                margin-bottom: 6px;
-            }
-            .qr-card {
-                padding: 12px;
-            }
-            .qr-card img {
-                width: 80px;
-                height: 80px;
-            }
-        }
+        titleEl.addEventListener('click', () => {
+            titleEl.classList.toggle('active');
+            wrapper.classList.toggle('collapsed');
+        });
 
-        /* Mobile Phone (< 576px) - Touch Friendly */
-        @media (max-width: 576px) {
-            html {
-                font-size: 13px;
-            }
-            body {
-                padding: 6px;
-                font-size: 13px;
-                background: #f8f9fa;
-            }
-            .resume-container {
-                max-width: 100%;
-                min-height: auto;
-                padding: 14px;
-                box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-                border-radius: 6px;
-                margin: 6px 0 12px;
-            }
-            .toolbar {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 6px;
-                margin-bottom: 12px;
-            }
-            .toolbar button {
-                padding: 7px 12px;
-                margin: 3px;
-                font-size: 11px;
-                min-height: 36px;
-                min-width: 36px;
-            }
-            .toolbar button:active {
-                transform: scale(0.95);
-            }
-            .header {
-                margin-bottom: 12px;
-                padding: 5px 0 8px;
-            }
-            .header-main {
-                flex-direction: column;
-                gap: 8px;
-                align-items: center;
-            }
-            .header-photo img {
-                width: 55px;
-                height: 55px;
-                border-radius: 50%;
-            }
-            h1 {
-                font-size: 16px;
-                margin: 4px 0;
-                word-break: break-word;
-            }
-            h2 {
-                font-size: 12px;
-            }
-            .role-pill {
-                font-size: 10px;
-                padding: 3px 8px;
-            }
-            .contact-header {
-                font-size: 8.5px;
-                gap: 8px;
-                margin-bottom: 4px;
-                flex-direction: column;
-                align-items: center;
-            }
-            .contact-header span {
-                display: block;
-                margin: 1px 0;
-            }
-            .section {
-                margin-bottom: 10px;
-            }
-            .section-title {
-                font-size: 12px;
-                margin-bottom: 8px;
-                padding-bottom: 4px;
-                border-bottom: 2px solid #7466aa;
-            }
-            .entry-item, .skill-group {
-                margin-bottom: 10px;
-            }
-            .entry-title {
-                font-size: 12px;
-                margin-bottom: 3px;
-                cursor: pointer;
-                touch-action: manipulation;
-            }
-            .entry-detail {
-                font-size: 10px;
-                margin-bottom: 2px;
-            }
-            .skill-pill {
-                display: inline-block;
-                font-size: 10px;
-                padding: 4px 8px;
-                margin: 3px 4px 3px 0;
-                min-height: 24px;
-                min-width: 24px;
-            }
-            .qr-card {
-                padding: 10px;
-                text-align: center;
-                margin-top: 8px;
-            }
-            .qr-card img {
-                width: 70px;
-                height: 70px;
-                border-radius: 4px;
-            }
-            .qr-card p {
-                font-size: 9px;
-                margin-top: 4px;
-            }
-        }
+        return wrapper;
+    }
 
-        /* Touch device optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .toolbar button,
-            .skill-pill,
-            .entry-title {
-                min-height: 40px;
-                min-width: 40px;
-                padding: 8px 14px;
-            }
-            .toolbar button:hover {
-                transform: none;
-            }
-            .toolbar button:active {
-                transform: scale(0.96);
-            }
-        }
+    /** Section with collapsible body */
+    function buildSection(icon, label, bodyContent, extraCls = '') {
+        const arrow  = el('span', { cls: 's-arrow', text: '▼' });
+        const iconEl = el('span', { cls: 's-icon', text: icon });
+        const titleEl = el('div', { cls: 'section-title' }, iconEl, label, arrow);
+        const body    = el('div', { cls: 's-body' }, bodyContent);
+        const section = el('div', { cls: 'r-section ' + extraCls }, titleEl, body);
 
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
+        titleEl.addEventListener('click', () => section.classList.toggle('collapsed'));
+        return section;
+    }
 
-        @media print {
-            @page {
-                size: A4;
-                margin: 0.5in;
-            }
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-                font-size: 11pt;
-                color: #000;
-            }
-            .toolbar {
-                display: none !important;
-            }
-            .resume-container {
-                margin: 0;
-                padding: 20px;
-                box-shadow: none;
-                border-radius: 0;
-                max-width: 100%;
-                page-break-after: avoid;
-            }
-            .header {
-                page-break-after: avoid;
-                margin-bottom: 15px;
-            }
-            .header::after {
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .section {
-                page-break-inside: avoid;
-                margin-bottom: 15px;
-            }
-            .entry {
-                page-break-inside: avoid;
-                margin-bottom: 8px;
-            }
-            .section-title {
-                page-break-after: avoid;
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .skill-tag {
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .qr-card {
-                page-break-inside: avoid;
-            }
-            .header-photo img,
-            .qr-card img {
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            a {
-                text-decoration: none;
-                color: #7466aa;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Toolbar -->
-    <div class="toolbar">
-        <button onclick="window.print()">🖨️ Print</button>
-        <button onclick="downloadPDF()">📥 Save as PDF</button>
-        <button onclick="shareResume()">📤 Share</button>
-        <button onclick="copyContacts()">📋 Copy Contacts</button>
-    </div>
+    /** Skills section content */
+    function buildSkills(skills) {
+        const wrap = el('div', { cls: 'skill-tags' });
+        skills.forEach(s => {
+            const tag = el('button', { cls: 'skill-tag', text: s });
+            tag.addEventListener('click', () => tag.classList.toggle('active'));
+            wrap.appendChild(tag);
+        });
+        return wrap;
+    }
 
-    <div class="resume-container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-main">
-                <div class="header-photo">
-                    <img src="../7466AA.jpg" alt="Nabin Dhakal" id="profilePhoto">
-                </div>
-                <div class="header-content">
-                    <div class="headline">
-                        <div class="header-name" id="headerName">Nabin Dhakal</div>
-                        <span class="role-pill">Java Developer</span>
-                    </div>
-                    <p>Building reliable Java and SQL solutions with clean, maintainable code.</p>
-                </div>
-                <div class="qr-card" id="qrCard">
-                    <img id="qrCode" alt="QR to view resume">
-                    <small>Scan to view</small>
-                </div>
-            </div>
-            <!-- Contact Info -->
-            <div class="contact-header">
-                <span>📞 <a href="tel:+977-9869596970">+977-9869596970</a></span>
-                <span>📧 <a href="mailto:info@nabindhakal28.com.np">info@nabindhakal28.com.np</a></span>
-                <span>📍 Dhapakhel, Lalitpur</span>
-                <span>🔗 <a href="https://www.linkedin.com/in/cpnnabin/" target="_blank">LinkedIn</a></span>
-                <span>💻 <a href="https://github.com/cpnnabin" target="_blank">GitHub</a></span>
-            </div>
-        </div>
+    // ════════════════════════════════════════════
+    //  PAGE BUILD
+    // ════════════════════════════════════════════
+    function buildPage() {
+        // ── Inject CSS ──────────────────────────
+        const style = document.createElement('style');
+        style.textContent = CSS;
+        document.head.appendChild(style);
+        document.title = `${RESUME_DATA.name} - Resume`;
 
-        <!-- Professional Summary -->
-        <div class="section" id="summarySection">
-            <div class="section-title" data-icon="📝">Professional Summary</div>
-            <div class="entry-content" id="summaryText">
-                I am a dedicated Java Developer aspiring to join an organization where I can fully utilize my technical skills, learn new technologies, apply innovative ideas, and make a significant contribution to organizational success while building a strong career growth path. With foundational knowledge of database management using SQL and MySQL, and proficiency in Java Object-Oriented Programming, I am prepared to develop robust and scalable applications.
-            </div>
-        </div>
+        // ── TOOLBAR ─────────────────────────────
+        const toolbar = el('div', { id: 'toolbar' },
+            el('button', { text: '🖨️ Print',        onclick: () => window.print() }),
+            el('button', { text: '📥 Save as PDF',   onclick: downloadPDF }),
+            el('button', { text: '📤 Share',          onclick: shareResume }),
+            el('button', { text: '📋 Copy Contacts', onclick: copyContacts }),
+        );
 
-        <!-- Skills -->
-        <div class="section" id="skillsSection">
-            <div class="section-title" data-icon="⚡">Skills</div>
-            <div class="skill-tags" id="skillTags">
-                <button class="skill-tag">Java · OOP</button>
-                <button class="skill-tag">SQL · MySQL</button>
-                <button class="skill-tag">HTML5</button>
-                <button class="skill-tag">CSS3</button>
-                <button class="skill-tag">Debugging & Testing</button>
-                <button class="skill-tag">Responsive Layouts</button>
-            </div>
-        </div>
+        // ── PHOTO ────────────────────────────────
+        const photo = el('img', { src: RESUME_DATA.photo, alt: RESUME_DATA.name });
+        const headerPhoto = el('div', { id: 'header-photo' }, photo);
 
-        <!-- Projects -->
-        <div class="section">
-            <div class="section-title" data-icon="🚀">Projects</div>
-            <div class="entry">
-                <div class="entry-title">Library Management System</div>
-                <div class="entry-subtitle">Java & MySQL | 2024-2025</div>
-                <div class="entry-content">
-                    <ul>
-                        <li>Developed a basic application to manage book records and user borrowing history</li>
-                        <li>Implemented using Java for backend logic and MySQL for database management</li>
-                        <li>Designed relational database schema for efficient data retrieval and management</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        // ── NAME + ROLE + TAGLINE ────────────────
+        const nameEl    = el('div', { id: 'r-name', text: RESUME_DATA.name });
+        const rolePill  = el('span', { cls: 'role-pill', text: RESUME_DATA.role });
+        const headline  = el('div', { id: 'headline' }, nameEl, rolePill);
+        const tagline   = el('p',   { id: 'r-tagline', text: RESUME_DATA.tagline });
+        const headerContent = el('div', { id: 'header-content' }, headline, tagline);
 
-        <!-- Experience -->
-        <div class="section">
-            <div class="section-title" data-icon="💼">Professional Experience</div>
-            <div class="entry">
-                <div class="entry-title">Java Backend Developer Intern</div>
-                <div class="entry-subtitle">MetaHorizon, Baneshwor, Kathmandu | Jun 2025 - Sep 2025</div>
-                <div class="entry-content">
-                    <ul>
-                        <li>Built backend features and REST APIs using Java</li>
-                        <li>Designed and implemented database integrations with MySQL</li>
-                        <li>Collaborated with team to develop scalable application features</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        nameEl.addEventListener('click', () => copyText(RESUME_DATA.name));
 
-        <!-- Education -->
-        <div class="section">
-            <div class="section-title" data-icon="🎓">Academic History</div>
-            <div class="entry">
-                <div class="entry-title">BSc. Software Engineer</div>
-                <div class="entry-subtitle">Patan College for Professional Studies, Kupandol, Lalitpur</div>
-                <div class="entry-content">Expected: 2025 - 2028</div>
-            </div>
-            <div class="entry">
-                <div class="entry-title">+2 in Science</div>
-                <div class="entry-subtitle">Global School of Science, Mid-Baneshwor, Kathmandu</div>
-                <div class="entry-content">2021 - 2023</div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Print functionality
-        function downloadPDF() {
-            window.print();
-            alert('Use browser Print dialog:\n1. Select "Save as PDF"\n2. Click "Save"');
-        }
-
-        // Share functionality
-        function shareResume() {
-            const text = 'Check out my Resume - Nabin Dhakal (Java Developer)';
+        // ── QR CODE ──────────────────────────────
+        const qrImg  = el('img', { alt: 'QR Code', id: 'qr-img' });
+        const qrCard = el('div', { id: 'qr-card' },
+            qrImg,
+            el('small', { text: 'Scan to view' })
+        );
+        // QR src set after page load (needs URL)
+        window.addEventListener('load', () => {
             const url = window.location.href;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Nabin Dhakal Resume',
-                    text: text,
-                    url: url
-                }).catch(err => console.log('Share cancelled'));
-            } else {
-                // Fallback: Copy link to clipboard
-                navigator.clipboard.writeText(url);
-                alert('Resume link copied to clipboard!');
-            }
-        }
+            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(url);
+            qrCard.addEventListener('click', () =>
+                navigator.clipboard.writeText(url).then(() => alert('Link copied.')).catch(() => {})
+            );
+        });
 
-        // Add click-to-call functionality
-        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (!navigator.userAgent.match(/iPhone|Android|iPad/)) {
-                    e.preventDefault();
-                    alert('Phone number: ' + this.textContent + '\n\nCopied to clipboard!');
-                    navigator.clipboard.writeText(this.textContent.trim());
+        // ── HEADER MAIN ROW ───────────────────────
+        const headerMain = el('div', { id: 'header-main' }, headerPhoto, headerContent, qrCard);
+
+        // ── CONTACT BAR ──────────────────────────
+        const contactBar = el('div', { id: 'contact-bar' });
+        RESUME_DATA.contact.forEach(c => {
+            let inner;
+            if (c.href) {
+                const a = el('a', { href: c.href, text: c.label });
+                if (c.target) a.setAttribute('target', c.target);
+                if (c.href.startsWith('tel:')) {
+                    a.addEventListener('click', e => {
+                        if (!navigator.userAgent.match(/iPhone|Android|iPad/)) {
+                            e.preventDefault();
+                            copyText(c.label);
+                            alert('Copied: ' + c.label);
+                        }
+                    });
                 }
-            });
+                inner = a;
+            } else {
+                inner = document.createTextNode(c.label);
+            }
+            contactBar.appendChild(el('span', {}, document.createTextNode(c.icon + ' '), inner));
         });
 
-        // Add smooth scroll for links
-        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Allow default mailto behavior
-                return true;
-            });
-        });
+        // ── FULL HEADER ───────────────────────────
+        const header = el('div', { id: 'r-header' }, headerMain, contactBar);
 
-        // Auto-print if opened directly (optional)
-        // window.addEventListener('load', function() {
-        //     window.print();
-        // });
+        // ── SUMMARY ──────────────────────────────
+        const summaryContent = el('p', { cls: 'plain-text', text: RESUME_DATA.summary.trim() });
+        const summarySection = buildSection('📝', ' Professional Summary', summaryContent, 'full');
 
-        // Toggle skill tag highlight
-        document.querySelectorAll('.skill-tag').forEach(tag => {
-            tag.addEventListener('click', () => {
-                tag.classList.toggle('active');
-            });
-        });
+        // ── SKILLS ───────────────────────────────
+        const skillsSection = buildSection('⚡', ' Skills', buildSkills(RESUME_DATA.skills), 'full');
 
-        // Collapse/expand sections when title is clicked
-        document.querySelectorAll('.section-title').forEach(title => {
-            title.addEventListener('click', () => {
-                const section = title.closest('.section');
-                section.classList.toggle('collapsed');
-            });
-        });
+        // ── PROJECTS ─────────────────────────────
+        const projectsBody = el('div');
+        RESUME_DATA.projects.forEach(p => projectsBody.appendChild(buildEntry(p)));
+        const projectsSection = buildSection('🚀', ' Projects', projectsBody);
 
-        // Highlight entry titles on click
-        document.querySelectorAll('.entry-title').forEach(entry => {
-            entry.addEventListener('click', () => {
-                entry.classList.toggle('active');
-                entry.closest('.entry').classList.toggle('collapsed');
-            });
-        });
+        // ── EXPERIENCE ───────────────────────────
+        const expBody = el('div');
+        RESUME_DATA.experience.forEach(e => expBody.appendChild(buildEntry(e)));
+        const expSection = buildSection('💼', ' Professional Experience', expBody);
 
-        // Clickable name copies full name
-        const headerName = document.getElementById('headerName');
-        if (headerName) {
-            headerName.addEventListener('click', () => {
-                navigator.clipboard.writeText(headerName.textContent.trim()).catch(() => {});
-            });
+        // ── EDUCATION ────────────────────────────
+        const eduBody = el('div');
+        RESUME_DATA.education.forEach(e => eduBody.appendChild(buildEntry(e)));
+        const eduSection = buildSection('🎓', ' Academic History', eduBody, 'full');
+
+        // ── BODY GRID ────────────────────────────
+        const body = el('div', { id: 'r-body' },
+            summarySection,
+            skillsSection,
+            projectsSection,
+            expSection,
+            eduSection,
+        );
+
+        // ── CONTAINER ────────────────────────────
+        const resume = el('div', { id: 'resume' }, header, body);
+
+        // ── MOUNT ────────────────────────────────
+        document.body.appendChild(toolbar);
+        document.body.appendChild(resume);
+    }
+
+    // ════════════════════════════════════════════
+    //  TOOLBAR ACTIONS
+    // ════════════════════════════════════════════
+    function downloadPDF() {
+        window.print();
+        setTimeout(() => alert(
+            'In the Print dialog:\n' +
+            '1. Destination → Save as PDF\n' +
+            '2. Paper size  → Custom: 9.5 × 13 in\n' +
+            '3. Margins     → None / Minimum\n' +
+            '4. ✅ Background graphics ON\n' +
+            '5. Click Save'
+        ), 400);
+    }
+
+    function shareResume() {
+        const url = window.location.href;
+        if (navigator.share) {
+            navigator.share({ title: 'Nabin Dhakal Resume', text: 'Java Developer Resume', url }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(url).then(() => alert('Link copied to clipboard!'));
         }
+    }
 
-        // Generate QR for this resume URL
-        const qrImg = document.getElementById('qrCode');
-        const qrCard = document.getElementById('qrCard');
-        const resumeUrl = window.location.href;
-        if (qrImg) {
-            const encoded = encodeURIComponent(resumeUrl);
-            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encoded;
-        }
-        if (qrCard) {
-            qrCard.addEventListener('click', () => {
-                navigator.clipboard.writeText(resumeUrl).then(() => alert('Resume link copied.')).catch(() => {});
-            });
-        }
+    function copyContacts() {
+        const lines = RESUME_DATA.contact.map(c => c.label).join(' | ');
+        copyText(lines).then ? copyText(lines).then(() => alert('Contacts copied!')) : alert('Contacts copied!');
+        navigator.clipboard.writeText(lines)
+            .then(() => alert('Contacts copied!'))
+            .catch(() => alert('Copy not supported.'));
+    }
 
-        // Copy contact info
-        function copyContacts() {
-            const contacts = Array.from(document.querySelectorAll('.contact-info span')).map(s => s.innerText).join(' | ');
-            navigator.clipboard.writeText(contacts).then(() => alert('Contacts copied to clipboard.')).catch(() => alert('Copy not supported in this browser.'));
-        }
+    // ════════════════════════════════════════════
+    //  INIT
+    // ════════════════════════════════════════════
+    buildPage();
     </script>
-</body>
-</html>
+    </body>
+    </html>
