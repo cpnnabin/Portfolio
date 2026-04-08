@@ -32,3 +32,7 @@ npm-debug.log*
 $RECYCLE.BIN/
 # VS Code settings
 .history/
+
+# Cloudflare/AI local metadata
+.wrangler/
+.qodo/
